@@ -85,7 +85,7 @@ public class Article implements Serializable {
 		this.articleCategory = articleCategory;
 	}
 
-	@OneToMany(mappedBy="",
+	@OneToMany(mappedBy="article",
 			cascade=CascadeType.ALL,
 			fetch=FetchType.EAGER)
 	public List<PurchaseDetail> getPurchaseDetails() {

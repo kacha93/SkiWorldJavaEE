@@ -62,21 +62,22 @@ public class Event implements Serializable {
 		this.adress = adress;
 	}
 	
-	@OneToMany()
+	@OneToMany(mappedBy="event",
+			cascade=CascadeType.ALL)
 	public List<Planning> getPlannings() {
 		return plannings;
 	}
 	public void setPlannings(List<Planning> plannings) {
 		this.plannings = plannings;
 	}
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	public EventManager getEventManager() {
 		return eventManager;
 	}
 	public void setEventManager(EventManager eventManager) {
 		this.eventManager = eventManager;
 	}
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	public Player getPlayer() {
 		return player;
 	}

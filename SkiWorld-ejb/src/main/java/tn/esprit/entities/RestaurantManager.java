@@ -22,7 +22,8 @@ public class RestaurantManager extends User implements Serializable {
 		super();
 	}
 
-	@OneToMany
+	@OneToMany(mappedBy="restaurantManager",
+			cascade=CascadeType.ALL)
 	public List<Restaurant> getRestaurants() {
 		return restaurants;
 	}

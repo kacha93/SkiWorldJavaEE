@@ -32,7 +32,8 @@ public class HotelManager extends User implements Serializable {
 		this.exprinceYears = exprinceYears;
 	}
 
-	@OneToMany
+	@OneToMany(mappedBy="hotelManager",
+			cascade=CascadeType.ALL)
 	public List<Hotel> getHotel() {
 		return hotel;
 	}

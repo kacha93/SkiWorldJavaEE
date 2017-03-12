@@ -20,6 +20,8 @@ public class Player extends User implements Serializable {
 	
 	private List<Claim>claims ;
 	private List<PisteReservation>pisteReservations;
+	
+	private EventManager eventManager;
 
 	
 	private static final long serialVersionUID = 1L;
@@ -52,7 +54,8 @@ public class Player extends User implements Serializable {
 		this.experienceYears = experienceYears;
 	}
 
-	@OneToMany
+	@OneToMany(mappedBy="player",
+			cascade=CascadeType.ALL)
 	public List<Claim> getClaims() {
 		return claims;
 	}
@@ -61,7 +64,8 @@ public class Player extends User implements Serializable {
 		this.claims = claims;
 	}
 
-	@OneToMany
+	@OneToMany(mappedBy="player",
+			cascade=CascadeType.ALL)
 	public List<PisteReservation> getPisteReservations() {
 		return pisteReservations;
 	}
@@ -69,6 +73,19 @@ public class Player extends User implements Serializable {
 	public void setPisteReservations(List<PisteReservation> pisteReservations) {
 		this.pisteReservations = pisteReservations;
 	}
+
+	@ManyToOne(cascade=CascadeType.ALL)
+	public EventManager getEventManager() {
+		return eventManager;
+	}
+
+	public void setEventManager(EventManager eventManager) {
+		this.eventManager = eventManager;
+	}
+
+	
+	
+	
 	
 	
    

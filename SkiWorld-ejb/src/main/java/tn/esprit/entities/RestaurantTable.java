@@ -48,7 +48,8 @@ public class RestaurantTable implements Serializable {
 		this.restaurant = restaurant;
 	}
 	
-	@OneToMany
+	@OneToMany(mappedBy="restaurantTable",
+			cascade=CascadeType.ALL)
 	public List<RestaurantTableReservation> getRestaurantTableReservations() {
 		return restaurantTableReservations;
 	}

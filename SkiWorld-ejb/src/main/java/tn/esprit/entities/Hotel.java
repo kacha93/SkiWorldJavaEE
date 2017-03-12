@@ -22,9 +22,11 @@ public class Hotel implements Serializable {
 	private Adress adress;
 	private byte[] logo ;
 	private byte[] image;
-	private List<HotelRoomReservation> reservations;
+	
 	private Parking parking;
 	private HotelManager hotelManager;
+	
+	private List<HotelRoom> hotelRoom;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -88,13 +90,7 @@ public class Hotel implements Serializable {
 		this.image = image;
 	}
 	
-	@OneToMany
-	public List<HotelRoomReservation> getReservations() {
-		return reservations;
-	}
-	public void setReservations(List<HotelRoomReservation> reservations) {
-		this.reservations = reservations;
-	}
+	
 	
 	@OneToOne
 	public Parking getParking() {
@@ -110,7 +106,17 @@ public class Hotel implements Serializable {
 	public void setHotelManager(HotelManager hotelManager) {
 		this.hotelManager = hotelManager;
 	}
+	
+	@OneToMany(mappedBy="hotel",
+			cascade=CascadeType.ALL)
+	public List<HotelRoom> getHotelRoom() {
+		return hotelRoom;
+	}
+	public void setHotelRoom(List<HotelRoom> hotelRoom) {
+		this.hotelRoom = hotelRoom;
+	}
    
+	
 	
 	
 }

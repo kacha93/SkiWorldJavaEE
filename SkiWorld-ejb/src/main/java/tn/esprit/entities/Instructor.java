@@ -39,7 +39,8 @@ public class Instructor extends User implements Serializable {
 		this.salary = salary;
 	}
 
-	@OneToMany
+	@OneToMany(mappedBy="instructor",
+			cascade=CascadeType.ALL)
 	public List<Planning> getPlannings() {
 		return plannings;
 	}

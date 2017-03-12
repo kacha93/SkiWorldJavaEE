@@ -56,7 +56,8 @@ public class Shop implements Serializable {
 		this.shopManager = shopManager;
 	}
 	
-	@OneToMany
+	@OneToMany(mappedBy="shop",
+			cascade=CascadeType.ALL)
 	public List<Article> getArticles() {
 		return articles;
 	}

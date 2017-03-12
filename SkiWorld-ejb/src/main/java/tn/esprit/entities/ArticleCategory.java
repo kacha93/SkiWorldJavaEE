@@ -39,7 +39,8 @@ public class ArticleCategory implements Serializable {
 	}
 	
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL,
+			mappedBy="articleCategory")
 	public Article getArticle() {
 		return article;
 	}

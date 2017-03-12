@@ -35,7 +35,8 @@ public class Client extends User implements Serializable {
 	}
 
 	
-	@OneToMany()
+	@OneToMany(mappedBy="client",
+			cascade=CascadeType.ALL)
 	public List<PurchaseDetail> getPurchaseDetails() {
 		return purchaseDetails;
 	}
@@ -44,7 +45,8 @@ public class Client extends User implements Serializable {
 		this.purchaseDetails = purchaseDetails;
 	}
 
-	@OneToMany
+	@OneToMany(mappedBy="client",
+			cascade=CascadeType.ALL)
 	public List<Claim> getClaims() {
 		return claims;
 	}
@@ -53,7 +55,8 @@ public class Client extends User implements Serializable {
 		this.claims = claims;
 	}
 
-	@OneToMany
+	@OneToMany(mappedBy="client",
+			cascade=CascadeType.ALL)
 	public List<HotelRoomReservation> getHotelRoomReservations() {
 		return hotelRoomReservations;
 	}
@@ -62,7 +65,8 @@ public class Client extends User implements Serializable {
 		this.hotelRoomReservations = hotelRoomReservations;
 	}
 
-	@OneToMany
+	@OneToMany(mappedBy="client",
+			cascade=CascadeType.ALL)
 	public List<RestaurantTableReservation> getRestaurantTableReservations() {
 		return restaurantTableReservations;
 	}

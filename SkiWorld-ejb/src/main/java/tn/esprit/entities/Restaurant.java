@@ -72,21 +72,24 @@ public class Restaurant implements Serializable {
 	public void setRestaurantManager(RestaurantManager restaurantManager) {
 		this.restaurantManager = restaurantManager;
 	}
-	@OneToMany
+	@OneToMany(mappedBy="restaurant",
+			cascade=CascadeType.ALL)
 	public List<Worker> getWorkers() {
 		return workers;
 	}
 	public void setWorkers(List<Worker> workers) {
 		this.workers = workers;
 	}
-	@OneToMany
+	@OneToMany(mappedBy="restaurant",
+			cascade=CascadeType.ALL)
 	public List<MenuItem> getMenuItems() {
 		return menuItems;
 	}
 	public void setMenuItems(List<MenuItem> menuItems) {
 		this.menuItems = menuItems;
 	}
-	@OneToMany
+	@OneToMany(mappedBy="restaurant",
+			cascade=CascadeType.ALL)
 	public List<RestaurantTable> getRestaurantTables() {
 		return restaurantTables;
 	}

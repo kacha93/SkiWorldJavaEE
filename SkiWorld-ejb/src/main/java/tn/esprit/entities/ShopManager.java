@@ -22,7 +22,7 @@ public class ShopManager extends User implements Serializable {
 		super();
 	}
 
-	@OneToMany
+	@OneToMany(mappedBy="shopManager")
 	public List<Shop> getShops() {
 		return shops;
 	}

@@ -31,14 +31,16 @@ public class EventManager extends User implements Serializable {
 		this.experienceYears = experienceYears;
 	}
 	
-	@OneToMany
+	@OneToMany(mappedBy="eventManager",
+			cascade=CascadeType.ALL)
 	public List<Player> getPlayers() {
 		return players;
 	}
 	public void setPlayers(List<Player> players) {
 		this.players = players;
 	}
-	@OneToMany
+	@OneToMany(mappedBy="eventManager",
+			cascade=CascadeType.ALL)
 	public List<Event> getEvents() {
 		return events;
 	}

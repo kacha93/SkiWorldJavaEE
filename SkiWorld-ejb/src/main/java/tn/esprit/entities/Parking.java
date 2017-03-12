@@ -42,7 +42,7 @@ public class Parking implements Serializable {
 		this.occupiedPlaces = occupiedPlaces;
 	}
 	
-	@OneToOne
+	@OneToOne(mappedBy="parking")
 	public Hotel getHotel() {
 		return hotel;
 	}

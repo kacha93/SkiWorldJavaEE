@@ -41,10 +41,13 @@ public class PisteType implements Serializable {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public Piste getPistes() {
+	
+	@OneToOne(mappedBy="pisteType",
+			cascade=CascadeType.ALL)
+	public Piste getPiste() {
 		return piste;
 	}
-	public void setPistes(Piste piste) {
+	public void setPiste(Piste piste) {
 		this.piste = piste;
 	}
 	

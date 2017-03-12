@@ -52,7 +52,8 @@ public class HotelRoom implements Serializable {
 	public void setType(String type) {
 		this.type = type;
 	}
-	@OneToMany
+	@OneToMany(mappedBy="hotelRoom",
+			cascade=CascadeType.ALL)
 	public List<HotelRoomReservation> getHotelRoomReservations() {
 		return hotelRoomReservations;
 	}

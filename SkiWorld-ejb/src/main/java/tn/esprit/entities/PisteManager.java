@@ -15,23 +15,27 @@ import tn.esprit.entities.User;
 public class PisteManager extends User implements Serializable {
 
 	
-	private List<PisteReservation> pisteReservations;
+	
 	
 	private static final long serialVersionUID = 1L;
+	
+	private List<Piste> pistes;
 
 	public PisteManager() {
 		super();
 	}
 
-	@OneToMany(cascade=CascadeType.ALL,
-			fetch=FetchType.EAGER)
-	public List<PisteReservation> getPisteReservations() {
-		return pisteReservations;
+	@OneToMany(mappedBy="pisteManager")
+	public List<Piste> getPistes() {
+		return pistes;
 	}
 
-	public void setPisteReservations(List<PisteReservation> pisteReservations) {
-		this.pisteReservations = pisteReservations;
+	public void setPistes(List<Piste> pistes) {
+		this.pistes = pistes;
 	}
+
+	
+	
 	
 	
 	
