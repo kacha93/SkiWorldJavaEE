@@ -71,6 +71,10 @@ public class Adress {
 		this.city = city;
 		this.adress = adress;
 	}
+	public Adress() {
+		super();
+	}
+	
 	
 	
 }

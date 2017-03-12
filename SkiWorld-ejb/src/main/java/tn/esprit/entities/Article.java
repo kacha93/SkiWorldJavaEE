@@ -11,6 +11,7 @@ import javax.persistence.*;
 
 public class Article implements Serializable {
 	
+	
 	private int id;
 	private String name ; 
 	private String description;
@@ -26,6 +27,8 @@ public class Article implements Serializable {
 		super();
 	}
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getId() {
 		return id;
 	}
