@@ -6,7 +6,8 @@ import javax.persistence.Embeddable;
 public class Adress {
 	private String country;
 	private String city;
-	private String Adress;
+	private String adress;
+	
 	public String getCountry() {
 		return country;
 	}
@@ -20,25 +21,20 @@ public class Adress {
 		this.city = city;
 	}
 	public String getAdress() {
-		return Adress;
+		return adress;
 	}
 	public void setAdress(String adress) {
-		Adress = adress;
+		this.adress = adress;
 	}
-	public Adress(String country, String city, String adress) {
-		super();
-		this.country = country;
-		this.city = city;
-		Adress = adress;
-	}
-	public Adress() {
-		super();
+	@Override
+	public String toString() {
+		return "Adress [country=" + country + ", city=" + city + ", adress=" + adress + "]";
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((Adress == null) ? 0 : Adress.hashCode());
+		result = prime * result + ((adress == null) ? 0 : adress.hashCode());
 		result = prime * result + ((city == null) ? 0 : city.hashCode());
 		result = prime * result + ((country == null) ? 0 : country.hashCode());
 		return result;
@@ -52,10 +48,10 @@ public class Adress {
 		if (getClass() != obj.getClass())
 			return false;
 		Adress other = (Adress) obj;
-		if (Adress == null) {
-			if (other.Adress != null)
+		if (adress == null) {
+			if (other.adress != null)
 				return false;
-		} else if (!Adress.equals(other.Adress))
+		} else if (!adress.equals(other.adress))
 			return false;
 		if (city == null) {
 			if (other.city != null)
@@ -69,7 +65,12 @@ public class Adress {
 			return false;
 		return true;
 	}
+	public Adress(String country, String city, String adress) {
+		super();
+		this.country = country;
+		this.city = city;
+		this.adress = adress;
+	}
 	
 	
-
 }
