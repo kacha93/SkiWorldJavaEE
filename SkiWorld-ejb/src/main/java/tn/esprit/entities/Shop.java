@@ -13,6 +13,9 @@ public class Shop implements Serializable {
 
 	
 	private int id;
+	private String name ;
+	private Adress adress;
+	
 	private static final long serialVersionUID = 1L;
 
 	public Shop() {
@@ -26,5 +29,21 @@ public class Shop implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	@Embedded
+	public Adress getAdress() {
+		return adress;
+	}
+	public void setAdress(Adress adress) {
+		this.adress = adress;
+	}
+	
+	
    
 }

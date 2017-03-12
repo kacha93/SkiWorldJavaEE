@@ -25,6 +25,7 @@ public class User implements Serializable {
 	private Adress adress;
 	private String password ; 
 	private String login;
+	private byte[] image;
 	private static final long serialVersionUID = 1L;
 
 	public User() {
@@ -94,6 +95,14 @@ public class User implements Serializable {
 	public void setLogin(String login) {
 		this.login = login;
 	}
+	@Lob
+	public byte[] getImage() {
+		return image;
+	}
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
+	
 	
    
 }

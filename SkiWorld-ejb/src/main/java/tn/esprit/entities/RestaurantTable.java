@@ -13,12 +13,14 @@ public class RestaurantTable implements Serializable {
 
 	
 	private int id;
+	private int number;
 	private static final long serialVersionUID = 1L;
 
 	public RestaurantTable() {
 		super();
 	}   
 	@Id    
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getId() {
 		return this.id;
 	}
@@ -26,5 +28,12 @@ public class RestaurantTable implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
+	public int getNumber() {
+		return number;
+	}
+	public void setNumber(int number) {
+		this.number = number;
+	}
+	
    
 }

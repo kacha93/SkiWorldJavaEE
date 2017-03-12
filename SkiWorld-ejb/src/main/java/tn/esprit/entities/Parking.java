@@ -13,6 +13,8 @@ public class Parking implements Serializable {
 
 	
 	private int id;
+	private int placesNumber;
+	private int occupiedPlaces;
 	private static final long serialVersionUID = 1L;
 
 	public Parking() {
@@ -26,5 +28,18 @@ public class Parking implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
+	public int getPlacesNumber() {
+		return placesNumber;
+	}
+	public void setPlacesNumber(int placesNumber) {
+		this.placesNumber = placesNumber;
+	}
+	public int getOccupiedPlaces() {
+		return occupiedPlaces;
+	}
+	public void setOccupiedPlaces(int occupiedPlaces) {
+		this.occupiedPlaces = occupiedPlaces;
+	}
    
+	
 }

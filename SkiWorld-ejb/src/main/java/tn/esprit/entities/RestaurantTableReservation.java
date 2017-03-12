@@ -17,6 +17,7 @@ public class RestaurantTableReservation implements Serializable {
 
 	private RestaurantTableReservationPk pk;
 	private Date reservationDate;
+	private int customersNumber;
 	private static final long serialVersionUID = 1L;
 
 	public RestaurantTableReservation() {
@@ -39,6 +40,15 @@ public class RestaurantTableReservation implements Serializable {
 	public void setReservationDate(Date reservationDate) {
 		this.reservationDate = reservationDate;
 	}
+
+	public int getCustomersNumber() {
+		return customersNumber;
+	}
+
+	public void setCustomersNumber(int customersNumber) {
+		this.customersNumber = customersNumber;
+	}
+	
 	
    
 }
