@@ -23,6 +23,9 @@ public class HotelRoomReservation implements Serializable {
 	private boolean withParking ;
 	private boolean isEffective ;
 	
+	private Client client ; 
+	private HotelRoom hotelRoom;
+	
 	private static final long serialVersionUID = 1L;
 
 	public HotelRoomReservation() {
@@ -88,6 +91,25 @@ public class HotelRoomReservation implements Serializable {
 	public void setEffective(boolean isEffective) {
 		this.isEffective = isEffective;
 	}
+
+	@ManyToOne
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	@ManyToOne
+	public HotelRoom getHotelRoom() {
+		return hotelRoom;
+	}
+
+	public void setHotelRoom(HotelRoom hotelRoom) {
+		this.hotelRoom = hotelRoom;
+	}
+	
 	
 	
    

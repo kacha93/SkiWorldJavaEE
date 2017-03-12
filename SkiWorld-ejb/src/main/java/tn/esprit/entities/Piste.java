@@ -1,6 +1,8 @@
 package tn.esprit.entities;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
 
 /**
@@ -17,6 +19,8 @@ public class Piste implements Serializable {
 	private String difficuly;
 	private int totalPlaces;
 	
+	private List<PisteReservation> pisteReservations;
+	private PisteType pisteType;
 	private static final long serialVersionUID = 1L;
 
 	public Piste() {
@@ -50,6 +54,23 @@ public class Piste implements Serializable {
 	public void setTotalPlaces(int totalPlaces) {
 		this.totalPlaces = totalPlaces;
 	}
+	@OneToMany
+	public List<PisteReservation> getPisteReservations() {
+		return pisteReservations;
+	}
+	public void setPisteReservations(List<PisteReservation> pisteReservations) {
+		this.pisteReservations = pisteReservations;
+	}
+	
+	@ManyToOne
+	public PisteType getPisteType() {
+		return pisteType;
+	}
+	public void setPisteType(PisteType pisteType) {
+		this.pisteType = pisteType;
+	}
+	
+	
    
 	
 }

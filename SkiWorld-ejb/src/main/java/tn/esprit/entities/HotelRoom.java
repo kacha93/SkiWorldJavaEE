@@ -1,6 +1,8 @@
 package tn.esprit.entities;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
 
 /**
@@ -16,6 +18,8 @@ public class HotelRoom implements Serializable {
 	private int number ; 
 	private float price ; 
 	private String type;
+	private List<HotelRoomReservation> hotelRoomReservations;
+	private Hotel hotel ;
 	private static final long serialVersionUID = 1L;
 
 	public HotelRoom() {
@@ -48,6 +52,23 @@ public class HotelRoom implements Serializable {
 	public void setType(String type) {
 		this.type = type;
 	}
+	@OneToMany
+	public List<HotelRoomReservation> getHotelRoomReservations() {
+		return hotelRoomReservations;
+	}
+	public void setHotelRoomReservations(List<HotelRoomReservation> hotelRoomReservations) {
+		this.hotelRoomReservations = hotelRoomReservations;
+	}
+	
+	@ManyToOne
+	public Hotel getHotel() {
+		return hotel;
+	}
+	public void setHotel(Hotel hotel) {
+		this.hotel = hotel;
+	}
+	
+	
 	
 	
    

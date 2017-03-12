@@ -15,6 +15,7 @@ public class Parking implements Serializable {
 	private int id;
 	private int placesNumber;
 	private int occupiedPlaces;
+	private Hotel hotel;
 	private static final long serialVersionUID = 1L;
 
 	public Parking() {
@@ -40,6 +41,18 @@ public class Parking implements Serializable {
 	public void setOccupiedPlaces(int occupiedPlaces) {
 		this.occupiedPlaces = occupiedPlaces;
 	}
+	
+	@OneToOne
+	public Hotel getHotel() {
+		return hotel;
+	}
+	public void setHotel(Hotel hotel) {
+		this.hotel = hotel;
+	}
+	 
+	
+	
+	
    
 	
 }

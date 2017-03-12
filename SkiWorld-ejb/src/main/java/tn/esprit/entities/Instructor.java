@@ -1,6 +1,8 @@
 package tn.esprit.entities;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
 import tn.esprit.entities.User;
 
@@ -14,6 +16,7 @@ public class Instructor extends User implements Serializable {
 
 	private int experienceYears;
 	private float salary;
+	private List<Planning >plannings;
 	private static final long serialVersionUID = 1L;
 
 	public Instructor() {
@@ -35,6 +38,16 @@ public class Instructor extends User implements Serializable {
 	public void setSalary(float salary) {
 		this.salary = salary;
 	}
+
+	@OneToMany
+	public List<Planning> getPlannings() {
+		return plannings;
+	}
+
+	public void setPlannings(List<Planning> plannings) {
+		this.plannings = plannings;
+	}
+	
 	
    
 }
