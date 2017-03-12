@@ -1,6 +1,8 @@
 package tn.esprit.entities;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
 import tn.esprit.entities.User;
 
@@ -15,6 +17,9 @@ public class Player extends User implements Serializable {
 	private boolean isProfessional;
 	private boolean isVip;
 	private int experienceYears;
+	
+	private List<Claim>claims ;
+	private List<PisteReservation>pisteReservations;
 
 	
 	private static final long serialVersionUID = 1L;
@@ -46,6 +51,25 @@ public class Player extends User implements Serializable {
 	public void setExperienceYears(int experienceYears) {
 		this.experienceYears = experienceYears;
 	}
+
+	@OneToMany
+	public List<Claim> getClaims() {
+		return claims;
+	}
+
+	public void setClaims(List<Claim> claims) {
+		this.claims = claims;
+	}
+
+	@OneToMany
+	public List<PisteReservation> getPisteReservations() {
+		return pisteReservations;
+	}
+
+	public void setPisteReservations(List<PisteReservation> pisteReservations) {
+		this.pisteReservations = pisteReservations;
+	}
+	
 	
    
 }

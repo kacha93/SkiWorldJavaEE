@@ -16,13 +16,14 @@ public class ArticleCategory implements Serializable {
 	
 	private int id;
 	private String category;
-	private List< Article> articles;
+	private Article article;
 	private static final long serialVersionUID = 1L;
 
 	public ArticleCategory() {
 		super();
 	}   
 	@Id    
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getId() {
 		return this.id;
 	}
@@ -38,14 +39,12 @@ public class ArticleCategory implements Serializable {
 	}
 	
 	
-	@OneToMany(mappedBy="category",
-			cascade=CascadeType.ALL,
-			fetch=FetchType.EAGER)
-	public List<Article> getArticles() {
-		return articles;
+	@OneToOne
+	public Article getArticle() {
+		return article;
 	}
-	public void setArticles(List<Article> articles) {
-		this.articles = articles;
+	public void Article(Article article) {
+		this.article = article;
 	}
 	
 	

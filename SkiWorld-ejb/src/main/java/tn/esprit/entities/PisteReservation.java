@@ -19,6 +19,9 @@ public class PisteReservation implements Serializable {
 	private PisteReservationPk pk ;
 	private Date pisteReservationDate;
 	
+	private Piste piste ;
+	private Player player ;
+	
 	
 	
 
@@ -32,6 +35,38 @@ public class PisteReservation implements Serializable {
 
 	public void setPk(PisteReservationPk pk) {
 		this.pk = pk;
+	}
+	
+	
+
+
+
+
+	@ManyToOne
+	public Piste getPiste() {
+		return piste;
+	}
+
+
+
+
+	public void setPiste(Piste piste) {
+		this.piste = piste;
+	}
+
+
+
+
+	@ManyToOne
+	public Player getPlayer() {
+		return player;
+	}
+
+
+
+
+	public void setPlayer(Player player) {
+		this.player = player;
 	}
 
 

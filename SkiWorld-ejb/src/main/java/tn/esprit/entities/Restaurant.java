@@ -1,6 +1,8 @@
 package tn.esprit.entities;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
 
 /**
@@ -17,6 +19,10 @@ public class Restaurant implements Serializable {
 	private String category;
 	private Adress adress;
 	private byte[] logo;
+	private RestaurantManager restaurantManager ;
+	private List<Worker> workers;
+	private List<MenuItem>menuItems;
+	private List <RestaurantTable>restaurantTables;
 	private static final long serialVersionUID = 1L;
 
 	public Restaurant() {
@@ -58,6 +64,37 @@ public class Restaurant implements Serializable {
 	public void setAdress(Adress adress) {
 		this.adress = adress;
 	}
+	
+	@ManyToOne
+	public RestaurantManager getRestaurantManager() {
+		return restaurantManager;
+	}
+	public void setRestaurantManager(RestaurantManager restaurantManager) {
+		this.restaurantManager = restaurantManager;
+	}
+	@OneToMany
+	public List<Worker> getWorkers() {
+		return workers;
+	}
+	public void setWorkers(List<Worker> workers) {
+		this.workers = workers;
+	}
+	@OneToMany
+	public List<MenuItem> getMenuItems() {
+		return menuItems;
+	}
+	public void setMenuItems(List<MenuItem> menuItems) {
+		this.menuItems = menuItems;
+	}
+	@OneToMany
+	public List<RestaurantTable> getRestaurantTables() {
+		return restaurantTables;
+	}
+	public void setRestaurantTables(List<RestaurantTable> restaurantTables) {
+		this.restaurantTables = restaurantTables;
+	}
+	
+	
 	
 	
    

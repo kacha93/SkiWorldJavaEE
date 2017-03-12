@@ -1,6 +1,8 @@
 package tn.esprit.entities;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
 
 /**
@@ -15,6 +17,8 @@ public class Shop implements Serializable {
 	private int id;
 	private String name ;
 	private Adress adress;
+	private ShopManager shopManager ; 
+	private List<Article>articles;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -43,6 +47,23 @@ public class Shop implements Serializable {
 	public void setAdress(Adress adress) {
 		this.adress = adress;
 	}
+	
+	@ManyToOne
+	public ShopManager getShopManager() {
+		return shopManager;
+	}
+	public void setShopManager(ShopManager shopManager) {
+		this.shopManager = shopManager;
+	}
+	
+	@OneToMany
+	public List<Article> getArticles() {
+		return articles;
+	}
+	public void setArticles(List<Article> articles) {
+		this.articles = articles;
+	}
+	
 	
 	
    

@@ -19,6 +19,9 @@ public class Planning implements Serializable {
 	private PlanningPk pk ;
 	private Date planningDate ;
 	
+	private Instructor instructor ;
+	private Event event ;
+	
 	
 	@EmbeddedId
 	public PlanningPk getPk() {
@@ -45,5 +48,29 @@ public class Planning implements Serializable {
 	public void setPlanningDate(Date planningDate) {
 		this.planningDate = planningDate;
 	}
+
+
+	@ManyToOne
+	public Instructor getInstructor() {
+		return instructor;
+	}
+
+
+	public void setInstructor(Instructor instructor) {
+		this.instructor = instructor;
+	}
+
+
+	@ManyToOne
+	public Event getEvent() {
+		return event;
+	}
+
+
+	public void setEvent(Event event) {
+		this.event = event;
+	}
+	
+	
    
 }

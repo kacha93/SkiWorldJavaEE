@@ -14,6 +14,7 @@ public class Worker extends User implements Serializable {
 
 	private int experienceYears;
 	private String function;
+	private Restaurant restaurant;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -36,6 +37,17 @@ public class Worker extends User implements Serializable {
 	public void setFunction(String function) {
 		this.function = function;
 	}
+
+	@ManyToOne
+	public Restaurant getRestaurant() {
+		return restaurant;
+	}
+
+	public void setRestaurant(Restaurant restaurant) {
+		this.restaurant = restaurant;
+	}
+	
+	
 	
 	
    

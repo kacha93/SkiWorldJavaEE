@@ -19,6 +19,7 @@ public class Client extends User implements Serializable {
 	private List<PurchaseDetail> purchaseDetails;
 	private List<Claim> claims;
 	private List <HotelRoomReservation> hotelRoomReservations;
+	private List<RestaurantTableReservation> restaurantTableReservations;
 	private static final long serialVersionUID = 1L;
 
 	public Client() {
@@ -60,6 +61,16 @@ public class Client extends User implements Serializable {
 	public void setHotelRoomReservations(List<HotelRoomReservation> hotelRoomReservations) {
 		this.hotelRoomReservations = hotelRoomReservations;
 	}
+
+	@OneToMany
+	public List<RestaurantTableReservation> getRestaurantTableReservations() {
+		return restaurantTableReservations;
+	}
+
+	public void setRestaurantTableReservations(List<RestaurantTableReservation> restaurantTableReservations) {
+		this.restaurantTableReservations = restaurantTableReservations;
+	}
+	
 	
 	
 	

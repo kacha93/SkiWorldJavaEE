@@ -1,6 +1,8 @@
 package tn.esprit.entities;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
 
 /**
@@ -14,6 +16,9 @@ public class RestaurantTable implements Serializable {
 	
 	private int id;
 	private int number;
+	
+	private Restaurant restaurant;
+	private List<RestaurantTableReservation> restaurantTableReservations;
 	private static final long serialVersionUID = 1L;
 
 	public RestaurantTable() {
@@ -34,6 +39,23 @@ public class RestaurantTable implements Serializable {
 	public void setNumber(int number) {
 		this.number = number;
 	}
+	
+	@ManyToOne
+	public Restaurant getRestaurant() {
+		return restaurant;
+	}
+	public void setRestaurant(Restaurant restaurant) {
+		this.restaurant = restaurant;
+	}
+	
+	@OneToMany
+	public List<RestaurantTableReservation> getRestaurantTableReservations() {
+		return restaurantTableReservations;
+	}
+	public void setRestaurantTableReservations(List<RestaurantTableReservation> restaurantTableReservations) {
+		this.restaurantTableReservations = restaurantTableReservations;
+	}
+	
 	
    
 }

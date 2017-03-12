@@ -76,7 +76,7 @@ public class Article implements Serializable {
 		this.shop = shop;
 	}
 
-	@ManyToOne(cascade=CascadeType.ALL)
+	@OneToOne
 	public ArticleCategory getArticleCategory() {
 		return articleCategory;
 	}
