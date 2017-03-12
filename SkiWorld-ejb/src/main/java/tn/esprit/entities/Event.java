@@ -16,7 +16,7 @@ public class Event implements Serializable {
 	
 	private int id;
 	private String name;
-	private String place;
+	private Adress adress;
 	private Date eventDate;
 	private static final long serialVersionUID = 1L;
 
@@ -24,6 +24,7 @@ public class Event implements Serializable {
 		super();
 	}   
 	@Id    
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getId() {
 		return this.id;
 	}
@@ -38,13 +39,8 @@ public class Event implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}   
-	public String getPlace() {
-		return this.place;
-	}
-
-	public void setPlace(String place) {
-		this.place = place;
-	}   
+	
+	@Temporal(TemporalType.DATE)
 	public Date getEventDate() {
 		return this.eventDate;
 	}
@@ -52,5 +48,15 @@ public class Event implements Serializable {
 	public void setEventDate(Date eventDate) {
 		this.eventDate = eventDate;
 	}
+	
+	@Embedded
+	public Adress getAdress() {
+		return adress;
+	}
+	public void setAdress(Adress adress) {
+		this.adress = adress;
+	}
+	
+	
    
 }

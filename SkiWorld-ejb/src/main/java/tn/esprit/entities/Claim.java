@@ -31,6 +31,8 @@ public class Claim implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}   
+	
+	@Temporal(TemporalType.DATE)
 	public Date getClaimDate() {
 		return this.claimDate;
 	}

@@ -13,6 +13,7 @@ public class ArticleCategory implements Serializable {
 
 	
 	private int id;
+	private String category;
 	private static final long serialVersionUID = 1L;
 
 	public ArticleCategory() {
@@ -26,5 +27,12 @@ public class ArticleCategory implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
    
+	
 }
