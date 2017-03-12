@@ -38,15 +38,18 @@ public class ArticleCategory implements Serializable {
 		this.category = category;
 	}
 	
-	
-	@OneToOne(cascade=CascadeType.ALL,
-			mappedBy="articleCategory")
+	@OneToOne(mappedBy="articleCategory"
+			)
 	public Article getArticle() {
 		return article;
 	}
-	public void Article(Article article) {
+	public void setArticle(Article article) {
 		this.article = article;
 	}
+	
+
+	
+	
 	
 	
    
