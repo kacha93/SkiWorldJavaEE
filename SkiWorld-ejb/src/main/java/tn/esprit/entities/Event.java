@@ -3,6 +3,8 @@ package tn.esprit.entities;
 import java.io.Serializable;
 import java.lang.String;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.*;
 
 /**
@@ -18,6 +20,9 @@ public class Event implements Serializable {
 	private String name;
 	private Adress adress;
 	private Date eventDate;
+	private List<Planning> plannings;
+	private EventManager eventManager;
+	private Player player;
 	private static final long serialVersionUID = 1L;
 
 	public Event() {
@@ -56,6 +61,29 @@ public class Event implements Serializable {
 	public void setAdress(Adress adress) {
 		this.adress = adress;
 	}
+	
+	@OneToMany()
+	public List<Planning> getPlannings() {
+		return plannings;
+	}
+	public void setPlannings(List<Planning> plannings) {
+		this.plannings = plannings;
+	}
+	@ManyToOne
+	public EventManager getEventManager() {
+		return eventManager;
+	}
+	public void setEventManager(EventManager eventManager) {
+		this.eventManager = eventManager;
+	}
+	@ManyToOne
+	public Player getPlayer() {
+		return player;
+	}
+	public void setPlayer(Player player) {
+		this.player = player;
+	}
+	
 	
 	
    

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.lang.String;
 import java.util.Date;
 import javax.persistence.*;
+import javax.swing.text.html.HTMLDocument.HTMLReader.CharacterAction;
 
 /**
  * Entity implementation class for Entity: Claim
@@ -18,6 +19,8 @@ public class Claim implements Serializable {
 	private Date claimDate;
 	private String category;
 	private String claimText;
+	private Client client ; 
+	private Player player;
 	private static final long serialVersionUID = 1L;
 
 	public Claim() {
@@ -54,5 +57,23 @@ public class Claim implements Serializable {
 	public void setClaimText(String claimText) {
 		this.claimText = claimText;
 	}
+	
+	@ManyToOne(cascade=CascadeType.ALL)
+	public Client getClient() {
+		return client;
+	}
+	public void setClient(Client client) {
+		this.client = client;
+	}
+	
+	@ManyToOne(cascade=CascadeType.ALL)
+	public Player getPlayer() {
+		return player;
+	}
+	public void setPlayer(Player player) {
+		this.player = player;
+	}
+	
+	
    
 }

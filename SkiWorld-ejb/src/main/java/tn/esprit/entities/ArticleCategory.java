@@ -1,6 +1,8 @@
 package tn.esprit.entities;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
 
 /**
@@ -14,6 +16,7 @@ public class ArticleCategory implements Serializable {
 	
 	private int id;
 	private String category;
+	private List< Article> articles;
 	private static final long serialVersionUID = 1L;
 
 	public ArticleCategory() {
@@ -33,6 +36,19 @@ public class ArticleCategory implements Serializable {
 	public void setCategory(String category) {
 		this.category = category;
 	}
+	
+	
+	@OneToMany(mappedBy="category",
+			cascade=CascadeType.ALL,
+			fetch=FetchType.EAGER)
+	public List<Article> getArticles() {
+		return articles;
+	}
+	public void setArticles(List<Article> articles) {
+		this.articles = articles;
+	}
+	
+	
    
 	
 }

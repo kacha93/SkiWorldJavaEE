@@ -1,6 +1,8 @@
 package tn.esprit.entities;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
 
 /**
@@ -16,6 +18,9 @@ public class Article implements Serializable {
 	private String name ; 
 	private String description;
 	private float price;
+	private Shop shop;
+	private ArticleCategory articleCategory;
+	private List<PurchaseDetail> purchaseDetails;
 	
 	
 	
@@ -60,6 +65,38 @@ public class Article implements Serializable {
 	public void setPrice(float price) {
 		this.price = price;
 	}
+
+	@ManyToOne(cascade=CascadeType.ALL
+			)
+	public Shop getShop() {
+		return shop;
+	}
+
+	public void setShop(Shop shop) {
+		this.shop = shop;
+	}
+
+	@ManyToOne(cascade=CascadeType.ALL)
+	public ArticleCategory getArticleCategory() {
+		return articleCategory;
+	}
+
+	public void setArticleCategory(ArticleCategory articleCategory) {
+		this.articleCategory = articleCategory;
+	}
+
+	@OneToMany(mappedBy="",
+			cascade=CascadeType.ALL,
+			fetch=FetchType.EAGER)
+	public List<PurchaseDetail> getPurchaseDetails() {
+		return purchaseDetails;
+	}
+
+	public void setPurchaseDetails(List<PurchaseDetail> purchaseDetails) {
+		this.purchaseDetails = purchaseDetails;
+	}
+	
+	
 	
 	
    

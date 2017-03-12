@@ -1,6 +1,8 @@
 package tn.esprit.entities;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
 import tn.esprit.entities.User;
 
@@ -13,6 +15,8 @@ import tn.esprit.entities.User;
 public class HotelManager extends User implements Serializable {
 
 	private int exprinceYears;
+	
+	private List<Hotel> hotel ;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -27,5 +31,16 @@ public class HotelManager extends User implements Serializable {
 	public void setExprinceYears(int exprinceYears) {
 		this.exprinceYears = exprinceYears;
 	}
+
+	@OneToMany
+	public List<Hotel> getHotel() {
+		return hotel;
+	}
+
+	public void setHotel(List<Hotel> hotel) {
+		this.hotel = hotel;
+	}
+	
+	
    
 }

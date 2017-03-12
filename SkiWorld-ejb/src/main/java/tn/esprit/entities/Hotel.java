@@ -1,6 +1,8 @@
 package tn.esprit.entities;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
 
 /**
@@ -20,6 +22,9 @@ public class Hotel implements Serializable {
 	private Adress adress;
 	private byte[] logo ;
 	private byte[] image;
+	private List<HotelRoomReservation> reservations;
+	private Parking parking;
+	private HotelManager hotelManager;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -82,6 +87,30 @@ public class Hotel implements Serializable {
 	public void setImage(byte[] image) {
 		this.image = image;
 	}
+	
+	@OneToMany
+	public List<HotelRoomReservation> getReservations() {
+		return reservations;
+	}
+	public void setReservations(List<HotelRoomReservation> reservations) {
+		this.reservations = reservations;
+	}
+	
+	@OneToOne
+	public Parking getParking() {
+		return parking;
+	}
+	public void setParking(Parking parking) {
+		this.parking = parking;
+	}
+	@ManyToOne
+	public HotelManager getHotelManager() {
+		return hotelManager;
+	}
+	public void setHotelManager(HotelManager hotelManager) {
+		this.hotelManager = hotelManager;
+	}
    
+	
 	
 }
