@@ -14,8 +14,6 @@ import javax.persistence.*;
     @NamedQuery(name = "Hotel.findAll", query = "SELECT h FROM Hotel h"),
     @NamedQuery(name = "Hotel.findById", query = "SELECT h FROM Hotel h WHERE h.id = :id"),
     @NamedQuery(name = "Hotel.findByAdress", query = "SELECT h FROM Hotel h WHERE h.adress = :adress"),
-    @NamedQuery(name = "Hotel.findByCity", query = "SELECT h FROM Hotel h WHERE h.city = :city"),
-    @NamedQuery(name = "Hotel.findByCountry", query = "SELECT h FROM Hotel h WHERE h.country = :country"),
     @NamedQuery(name = "Hotel.findByAvailableRooms", query = "SELECT h FROM Hotel h WHERE h.availableRooms = :availableRooms"),
     @NamedQuery(name = "Hotel.findByName", query = "SELECT h FROM Hotel h WHERE h.name = :name"),
     @NamedQuery(name = "Hotel.findByRoomNumber", query = "SELECT h FROM Hotel h WHERE h.roomNumber = :roomNumber"),

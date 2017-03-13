@@ -13,16 +13,7 @@ import javax.persistence.*;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "Hotelroomreservation.findAll", query = "SELECT h FROM Hotelroomreservation h"),
-    @NamedQuery(name = "Hotelroomreservation.findByHotelRoomId", query = "SELECT h FROM Hotelroomreservation h WHERE h.hotelroomreservationPK.hotelRoomId = :hotelRoomId"),
-    @NamedQuery(name = "Hotelroomreservation.findByUserId", query = "SELECT h FROM Hotelroomreservation h WHERE h.hotelroomreservationPK.userId = :userId"),
-    @NamedQuery(name = "Hotelroomreservation.findByCheckIn", query = "SELECT h FROM Hotelroomreservation h WHERE h.checkIn = :checkIn"),
-    @NamedQuery(name = "Hotelroomreservation.findByCheckOut", query = "SELECT h FROM Hotelroomreservation h WHERE h.checkOut = :checkOut"),
-    @NamedQuery(name = "Hotelroomreservation.findByCustomerNumber", query = "SELECT h FROM Hotelroomreservation h WHERE h.customerNumber = :customerNumber"),
-    @NamedQuery(name = "Hotelroomreservation.findByEffective", query = "SELECT h FROM Hotelroomreservation h WHERE h.effective = :effective"),
-    @NamedQuery(name = "Hotelroomreservation.findByReservationDate", query = "SELECT h FROM Hotelroomreservation h WHERE h.reservationDate = :reservationDate"),
-    @NamedQuery(name = "Hotelroomreservation.findByWithParking", query = "SELECT h FROM Hotelroomreservation h WHERE h.withParking = :withParking")})
-
+    @NamedQuery(name = "HotelRoomReservation.findAll", query = "SELECT h FROM HotelRoomReservation h")})
 public class HotelRoomReservation implements Serializable {
 
 	private HotelRoomReservationPk pk ;
