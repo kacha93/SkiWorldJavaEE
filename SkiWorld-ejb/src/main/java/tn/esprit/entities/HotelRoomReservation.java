@@ -14,6 +14,7 @@ import javax.persistence.*;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "HotelRoomReservation.findAll", query = "SELECT h FROM HotelRoomReservation h")})
+//jfhhg
 public class HotelRoomReservation implements Serializable {
 
 	private HotelRoomReservationPk pk ;
