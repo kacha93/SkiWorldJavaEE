@@ -11,7 +11,10 @@ import tn.esprit.entities.User;
  *
  */
 @Entity
-
+@NamedQueries({
+    @NamedQuery(name = "Client.findAll", query = "SELECT c FROM Client c"),
+    @NamedQuery(name = "Client.findByCardNumber", query = "SELECT c FROM Client c WHERE c.cardNumber = :cardNumber"),
+  })
 public class Client extends User implements Serializable {
 
 	
