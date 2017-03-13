@@ -5,7 +5,7 @@ import java.util.Date;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
-import javax.xml.bind.annotation.XmlRegistry;
+
 
 /**
  * Entity implementation class for Entity: User
