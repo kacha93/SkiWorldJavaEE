@@ -40,7 +40,8 @@ public class Hotel implements Serializable {
 
 	public Hotel() {
 		super();
-		hotelRoom = new ArrayList<HotelRoom>();
+		this.hotelRoom = new ArrayList<HotelRoom>();
+		this.adress = new Adress();
 	}   
 	@Id    
 	@GeneratedValue(strategy=GenerationType.AUTO)
