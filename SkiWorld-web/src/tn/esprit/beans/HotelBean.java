@@ -1,5 +1,6 @@
 package tn.esprit.beans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -24,7 +25,7 @@ public class HotelBean {
 	HotelServiceLocal ejb;
 
 	private Hotel item = new Hotel();
-	private List<Hotel> items = ejb.findAll();
+	private List<Hotel> items = new ArrayList<Hotel>();
 
 	public void create() {
 

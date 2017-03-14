@@ -2,6 +2,7 @@ package tn.esprit.beans;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -22,7 +23,7 @@ public class HotelRoomBean {
 	HotelRoomServiceLocal ejb;
 	
 	private HotelRoom item = new HotelRoom();
-	private List<HotelRoom> items;
+	private List<HotelRoom> items= new ArrayList<HotelRoom>();
 	
 	
 	public void create (){
