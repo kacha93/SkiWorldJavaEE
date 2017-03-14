@@ -1,6 +1,7 @@
 package tn.esprit.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -30,6 +31,7 @@ public class HotelRoom implements Serializable {
 
 	public HotelRoom() {
 		super();
+		hotelRoomReservations = new ArrayList<HotelRoomReservation>();
 	}   
 	@Id    
 	@GeneratedValue(strategy=GenerationType.AUTO)
