@@ -2,20 +2,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
 
 <h:head></h:head>
 <body>
 
 	<h:form>
 		<h:outputText value="Room Number" />
-		<h:inputText id="number" value="#{hoteRoomBean.item.number}" />
+		<h:inputText id="number" value="#{hotelRoomBean.item.number}" />
 		<br/>
 		<h:outputText value="Room Price" />
-		<h:inputText id ="price" value="#{hoteRoomBean.item.price}" />
+		<h:inputText id ="price" value="#{hotelRoomBean.item.price}" />
 		<br/>
 		<h:outputText value="Room Type" />
-		<h:inputText id="type" value="#{hoteRoomBean.item.type}" />
+		<h:inputText id="type" value="#{hotelRoomBean.item.type}" />
 		<br/>
 		<h:commandButton value="Add" action="#{hotelRoomBean.create}" />
 
