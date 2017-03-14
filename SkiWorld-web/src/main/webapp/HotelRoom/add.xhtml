@@ -9,13 +9,13 @@
 
 	<h:form>
 		<h:outputText value="Room Number" />
-		<h:inputText value="#{hoteRoomBean.item.number}" />
+		<h:inputText id="number" value="#{hoteRoomBean.item.number}" />
 		<br/>
 		<h:outputText value="Room Price" />
-		<h:inputText value="#{hoteRoomBean.item.price}" />
+		<h:inputText id ="price" value="#{hoteRoomBean.item.price}" />
 		<br/>
 		<h:outputText value="Room Type" />
-		<h:inputText value="#{hoteRoomBean.item.type}" />
+		<h:inputText id="type" value="#{hoteRoomBean.item.type}" />
 		<br/>
 		<h:commandButton value="Add" action="#{hotelRoomBean.create}" />
 
