@@ -6,11 +6,14 @@
 
 <h:head></h:head> 
 <body> 
-	<h:dataTable var="item" value="#{hotelBean.items}">
-	<h:column>#{item.id}</h:column>
-	<h:column>#{item.name}</h:column>
-	<h:column>#{item.roomNumber}</h:column>
-	<h:column>#{item.stars}</h:column>
-	</h:dataTable>
+	<h:form>
+		<h:dataTable var="item" value="#{hotelRoomBean.items}">
+		<h:column>#{item.id}</h:column>
+		<h:column>#{item.number}</h:column>
+		<h:column>#{item.price}</h:column>
+		<h:column>#{item.type}</h:column>
+		</h:dataTable>
+	</h:form>
+
 </body> 
 </html>
