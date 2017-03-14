@@ -18,7 +18,7 @@ public class Event implements Serializable {
 	
 	private int id;
 	private String name;
-	private Adress adress;
+	private String adress;
 	private Date eventDate;
 	private List<Planning> plannings;
 	private EventManager eventManager;
@@ -28,6 +28,18 @@ public class Event implements Serializable {
 	public Event() {
 		super();
 	}   
+	public Event(int id, String name, String adress) {
+		this.id=id; 
+		this.name=name; 
+		this.adress=adress;
+		
+	}
+	
+	public Event(String name, String adress) {
+		super();
+		this.name = name;
+		this.adress = adress;
+	}
 	@Id    
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getId() {
@@ -54,11 +66,10 @@ public class Event implements Serializable {
 		this.eventDate = eventDate;
 	}
 	
-	@Embedded
-	public Adress getAdress() {
+	public String getAdress() {
 		return adress;
 	}
-	public void setAdress(Adress adress) {
+	public void setAdress(String adress) {
 		this.adress = adress;
 	}
 	
