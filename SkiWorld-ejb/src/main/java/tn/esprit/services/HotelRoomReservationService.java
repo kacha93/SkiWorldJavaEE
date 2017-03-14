@@ -12,7 +12,7 @@ import tn.esprit.entities.HotelRoomReservation;
  * Session Bean implementation class HotelRoomReservationService
  */
 @Stateless
-public class HotelRoomReservationService implements HotelRoomReservationServiceRemote, HotelRoomReservationServiceLocal {
+public class HotelRoomReservationService implements  HotelRoomReservationServiceLocal {
 
 
 

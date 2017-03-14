@@ -13,7 +13,7 @@ import tn.esprit.entities.Parking;
  * Session Bean implementation class ParkingService
  */
 @Stateless
-public class ParkingService implements ParkingServiceRemote, ParkingServiceLocal {
+public class ParkingService implements ParkingServiceLocal {
 
     @PersistenceContext
     EntityManager em;
