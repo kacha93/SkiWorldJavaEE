@@ -8,6 +8,8 @@ import javax.persistence.*;
  *
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "Parking.findAll", query = "SELECT p FROM Parking p")})
 
 public class Parking implements Serializable {
 

@@ -8,7 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 import tn.esprit.entities.Hotel;
-import tn.esprit.services.HotelService;
+
 import tn.esprit.services.HotelServiceLocal;
 
 @ManagedBean(name="hotelBean")
@@ -24,7 +24,7 @@ public class HotelBean {
 	HotelServiceLocal ejb;
 
 	private Hotel item = new Hotel();
-	private List<Hotel> items;
+	private List<Hotel> items = ejb.findAll();
 
 	public void create() {
 
