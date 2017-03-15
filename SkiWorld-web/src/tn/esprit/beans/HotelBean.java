@@ -1,8 +1,10 @@
 package tn.esprit.beans;
 
-import java.util.ArrayList;
+
+import java.lang.ProcessBuilder.Redirect;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 
 import javax.faces.bean.ManagedBean;
@@ -18,24 +20,39 @@ import tn.esprit.services.HotelServiceLocal;
 public class HotelBean {
 
 	public HotelBean() {
-
+	
 	}
 
 	@EJB
 	HotelServiceLocal ejb;
 
-	private Hotel item = new Hotel();
-	private List<Hotel> items = new ArrayList<Hotel>();
+	private Hotel item ;
+	private List<Hotel> items ;
+	
+	@PostConstruct
+	public void init(){
+		items = ejb.findAll();
+		item  = new Hotel();
+	}
 
 	public void create() {
 
 		ejb.create(item);
 	}
+	
+	public void delete(Hotel hotel){
+		
+		ejb.delete(hotel);
+		init();
+		
+	}
+	
+	public void view(Hotel hotel){
+		
+	}
 
 	public List<Hotel> getItems() {
-		if (items == null) {
-			items = ejb.findAll();
-		}
+		
 		return items;
 	}
 
@@ -50,6 +67,7 @@ public class HotelBean {
 	public void setItems(List<Hotel> items) {
 		this.items = items;
 	}
+	
 	
 
 }

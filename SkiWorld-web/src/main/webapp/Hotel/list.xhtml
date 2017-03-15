@@ -12,6 +12,9 @@
 	<h:column>#{item.name}</h:column>
 	<h:column>#{item.roomNumber}</h:column>
 	<h:column>#{item.stars}</h:column>
+	<h:column>
+	<h:commandButton actionListener="#{hotelBean.delete(item)}" value="Delete" immediate="true" />
+	</h:column>
 	</h:dataTable>
 </h:form>
 </body> 
