@@ -4,9 +4,12 @@ package tn.esprit.beans;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 
 import tn.esprit.entities.HotelRoom;
 import tn.esprit.services.HotelRoomServiceLocal;
@@ -22,20 +25,29 @@ public class HotelRoomBean {
 	@EJB
 	HotelRoomServiceLocal ejb;
 	
-	private HotelRoom item = new HotelRoom();
-	private List<HotelRoom> items= new ArrayList<HotelRoom>();
+	private HotelRoom item ;
+	private List<HotelRoom> items;
+	
+	@PostConstruct
+	public void init(){
+		item = new HotelRoom();
+		items = ejb.findAll();
+	}
 	
 	
 	public void create (){
 		
 		ejb.create(item);
+		init();
 	}
 	
-	public List<HotelRoom> getItems(){
-		if(items==null){
-			items = ejb.findAll();
-		}
+	public void delete (HotelRoom hotelRoom){
+		init();
+		ejb.delete(hotelRoom);
 		
+	}
+	public List<HotelRoom> getItems(){
+
 		return items;
 	}
 

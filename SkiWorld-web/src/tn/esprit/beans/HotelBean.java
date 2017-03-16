@@ -1,7 +1,5 @@
 package tn.esprit.beans;
 
-
-import java.lang.ProcessBuilder.Redirect;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -9,65 +7,110 @@ import javax.ejb.EJB;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 
 import tn.esprit.entities.Hotel;
 
 import tn.esprit.services.HotelServiceLocal;
 
-@ManagedBean(name="hotelBean")
-@RequestScoped
+@ManagedBean(name = "hotelBean")
+@ViewScoped
 
 public class HotelBean {
 
 	public HotelBean() {
-	
+
 	}
 
 	@EJB
 	HotelServiceLocal ejb;
 
-	private Hotel item ;
-	private List<Hotel> items ;
+	private Hotel hotel= new Hotel();
 	
+	
+	private List<Hotel> hotels;
+	
+	
+	private boolean isAddVisble = false ;
+	private boolean isEditVisible = false;
+
 	@PostConstruct
-	public void init(){
-		items = ejb.findAll();
-		item  = new Hotel();
-	}
-
-	public void create() {
-
-		ejb.create(item);
-	}
-	
-	public void delete(Hotel hotel){
+	public void init() {
+		hotels = ejb.findAll();
+		hotel = new Hotel();
 		
-		ejb.delete(hotel);
+	}
+
+	public void prepareCreate() {
+		setAddVisble(true);
 		init();
 		
 	}
 	
-	public void view(Hotel hotel){
+	public void create() {
+		ejb.create(hotel);
+		setAddVisble(false);
+		init();
 		
-	}
-
-	public List<Hotel> getItems() {
-		
-		return items;
-	}
-
-	public Hotel getItem() {
-		return item;
-	}
-
-	public void setItem(Hotel item) {
-		this.item = item;
-	}
-
-	public void setItems(List<Hotel> items) {
-		this.items = items;
 	}
 	
+	public void prepareEdit(Hotel item){
+		hotel = item;
+		setEditVisible(true);
+		
+		
+	}
+	
+	public void edit(){
+		
+		ejb.edit(hotel);
+		setEditVisible(false);
+		
+	}
+
+
+	public void delete(Hotel hotel) {
+
+		
+		ejb.delete(hotel);
+		init();
+		
+
+	}
+
+	public Hotel getHotel() {
+		return hotel;
+	}
+
+	public void setHotel(Hotel hotel) {
+		this.hotel = hotel;
+	}
+
+	public List<Hotel> getHotels() {
+		return hotels;
+	}
+
+	public void setHotels(List<Hotel> hotels) {
+		this.hotels = hotels;
+	}
+
+
+
+	public boolean isAddVisble() {
+		return isAddVisble;
+	}
+
+	public void setAddVisble(boolean isAddVisble) {
+		this.isAddVisble = isAddVisble;
+	}
+
+	public boolean isEditVisible() {
+		return isEditVisible;
+	}
+
+	public void setEditVisible(boolean isEditVisible) {
+		this.isEditVisible = isEditVisible;
+	}
 	
 
 }

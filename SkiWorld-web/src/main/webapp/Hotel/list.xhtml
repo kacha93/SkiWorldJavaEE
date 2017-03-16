@@ -7,7 +7,7 @@
 <h:head></h:head> 
 <body> 
 <h:form>
-	<h:dataTable var="item" value="#{hotelBean.items}">
+	<h:dataTable var="item" value="#{hotelBean.hotels}">
 	<h:column>#{item.id}</h:column>
 	<h:column>#{item.name}</h:column>
 	<h:column>#{item.roomNumber}</h:column>
@@ -15,7 +15,60 @@
 	<h:column>
 	<h:commandButton actionListener="#{hotelBean.delete(item)}" value="Delete" immediate="true" />
 	</h:column>
+	<h:column>
+	<h:commandButton actionListener="#{hotelBean.prepareEdit(item)}" value="Edit"  >
+	</h:commandButton>
+	</h:column>
+	
 	</h:dataTable>
+	<h:commandButton actionListener="#{hotelBean.prepareCreate()}" value="Add"  >
+	</h:commandButton>
 </h:form>
+	<h:form rendered="#{hotelBean.editVisible}">
+		<h:outputLabel value="Name" />
+		<h:inputText value="#{hotelBean.hotel.name}" />
+		<br />
+		<h:outputLabel value="Room Numbers" />
+		<h:inputText value="#{hotelBean.hotel.roomNumber}" />
+		<br />
+		<h:outputLabel value="Stars" />
+		<h:inputText value="#{hotelBean.hotel.stars}" />
+		<br />
+		<h:outputLabel value="Country" />
+		<h:inputText value="#{hotelBean.hotel.adress.country}" />
+		<br />
+		<h:outputLabel value="City" />
+		<h:inputText value="#{hotelBean.hotel.adress.city}" />
+		<br />
+		<h:outputLabel value="Adress" />
+		<h:inputText value="#{hotelBean.hotel.adress.adress}" />
+		<br />
+
+
+		<h:commandButton value="Save" action="#{hotelBean.edit()}" />
+	</h:form>
+	<h:form rendered="#{hotelBean.addVisble}">
+		<h:outputLabel value="Name" />
+		<h:inputText value="#{hotelBean.hotel.name}" />
+		<br />
+		<h:outputLabel value="Room Numbers" />
+		<h:inputText value="#{hotelBean.hotel.roomNumber}" />
+		<br />
+		<h:outputLabel value="Stars" />
+		<h:inputText value="#{hotelBean.hotel.stars}" />
+		<br />
+		<h:outputLabel value="Country" />
+		<h:inputText value="#{hotelBean.hotel.adress.country}" />
+		<br />
+		<h:outputLabel value="City" />
+		<h:inputText value="#{hotelBean.hotel.adress.city}" />
+		<br />
+		<h:outputLabel value="Adress" />
+		<h:inputText value="#{hotelBean.hotel.adress.adress}" />
+		<br />
+
+
+		<h:commandButton value="Save" action="#{hotelBean.create()}" />
+	</h:form>
 </body> 
 </html>
