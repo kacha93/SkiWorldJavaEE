@@ -28,7 +28,7 @@ public class Adress {
 	}
 	@Override
 	public String toString() {
-		return "Adress [country=" + country + ", city=" + city + ", adress=" + adress + "]";
+		return "country:" + country + ", city:" + city + ", adress:" + adress;
 	}
 	@Override
 	public int hashCode() {

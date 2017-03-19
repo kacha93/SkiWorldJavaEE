@@ -2,73 +2,94 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+      xmlns:h="http://java.sun.com/jsf/html"
+         xmlns:p="http://primefaces.org/ui">
 
 <h:head></h:head> 
 <body> 
 <h:form>
-	<h:dataTable var="item" value="#{hotelBean.hotels}">
-	<h:column>#{item.id}</h:column>
-	<h:column>#{item.name}</h:column>
-	<h:column>#{item.roomNumber}</h:column>
-	<h:column>#{item.stars}</h:column>
-	<h:column>
+
+	<p:dataTable var="item" value="#{hotelBean.hotels}" >
+	<p:column>#{item.id}</p:column>
+	<p:column>#{item.name}</p:column>
+	<p:column>#{item.roomNumber}</p:column>
+	<p:column>#{item.stars}</p:column>
+	<p:column>
 	<h:commandButton actionListener="#{hotelBean.delete(item)}" value="Delete" immediate="true" />
-	</h:column>
-	<h:column>
-	<h:commandButton actionListener="#{hotelBean.prepareEdit(item)}" value="Edit"  >
-	</h:commandButton>
-	</h:column>
+	</p:column>
+	<p:column>
+	<h:commandButton actionListener="#{hotelBean.prepareEdit(item)}" value="Edit"  />
 	
-	</h:dataTable>
-	<h:commandButton actionListener="#{hotelBean.prepareCreate()}" value="Add"  >
-	</h:commandButton>
-</h:form>
-	<h:form rendered="#{hotelBean.editVisible}">
-		<h:outputLabel value="Name" />
-		<h:inputText value="#{hotelBean.hotel.name}" />
-		<br />
-		<h:outputLabel value="Room Numbers" />
-		<h:inputText value="#{hotelBean.hotel.roomNumber}" />
-		<br />
-		<h:outputLabel value="Stars" />
-		<h:inputText value="#{hotelBean.hotel.stars}" />
-		<br />
-		<h:outputLabel value="Country" />
-		<h:inputText value="#{hotelBean.hotel.adress.country}" />
-		<br />
-		<h:outputLabel value="City" />
-		<h:inputText value="#{hotelBean.hotel.adress.city}" />
-		<br />
-		<h:outputLabel value="Adress" />
-		<h:inputText value="#{hotelBean.hotel.adress.adress}" />
-		<br />
+	</p:column>
+	
+	</p:dataTable>
+	<h:commandButton actionListener="#{hotelBean.prepareCreate()}" 
+	value="Add"  
+	icon="ui-icon-plus"  
+	/>
+	
+	
+	</h:form>
+	
+	
+	
+	<p:panelGrid columns="2">
+		<h:form rendered="#{hotelBean.editVisible}">
+		<p:outputLabel value="Name" />
+		<p:inputText value="#{hotelBean.hotel.name}" />
+		
+		<p:outputLabel value="Room Numbers" />
+		<p:inputText value="#{hotelBean.hotel.roomNumber}" />
+		
+		<p:outputLabel value="Stars" />
+		<p:inputText value="#{hotelBean.hotel.stars}" />
+		
+		<p:outputLabel value="Country" />
+		<p:inputText value="#{hotelBean.hotel.adress.country}" />
+		
+		<p:outputLabel value="City" />
+		<p:inputText value="#{hotelBean.hotel.adress.city}" />
+		
+		<p:outputLabel value="Adress" />
+		<p:inputText value="#{hotelBean.hotel.adress.adress}" />
+		
 
 
 		<h:commandButton value="Save" action="#{hotelBean.edit()}" />
 	</h:form>
+	</p:panelGrid>
+	
+	
+
+	
+	<p:panelGrid columns="2">
+	
 	<h:form rendered="#{hotelBean.addVisble}">
-		<h:outputLabel value="Name" />
-		<h:inputText value="#{hotelBean.hotel.name}" />
-		<br />
-		<h:outputLabel value="Room Numbers" />
-		<h:inputText value="#{hotelBean.hotel.roomNumber}" />
-		<br />
-		<h:outputLabel value="Stars" />
-		<h:inputText value="#{hotelBean.hotel.stars}" />
-		<br />
-		<h:outputLabel value="Country" />
-		<h:inputText value="#{hotelBean.hotel.adress.country}" />
-		<br />
-		<h:outputLabel value="City" />
-		<h:inputText value="#{hotelBean.hotel.adress.city}" />
-		<br />
-		<h:outputLabel value="Adress" />
-		<h:inputText value="#{hotelBean.hotel.adress.adress}" />
-		<br />
+		<p:outputLabel value="Name" />
+		<p:inputText value="#{hotelBean.hotel.name}" />
+		
+		<p:outputLabel value="Room Numbers" />
+		<p:inputText value="#{hotelBean.hotel.roomNumber}" />
+		
+		<p:outputLabel value="Stars" />
+		<p:inputText value="#{hotelBean.hotel.stars}" />
+		
+		<p:outputLabel value="Country" />
+		<p:inputText value="#{hotelBean.hotel.adress.country}" />
+		
+		<p:outputLabel value="City" />
+		<p:inputText value="#{hotelBean.hotel.adress.city}" />
+		
+		<p:outputLabel value="Adress" />
+		<p:inputText value="#{hotelBean.hotel.adress.adress}" />
+		
 
 
 		<h:commandButton value="Save" action="#{hotelBean.create()}" />
 	</h:form>
+	</p:panelGrid>
+	
+	
 </body> 
 </html>
+   

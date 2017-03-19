@@ -8,6 +8,10 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
+import javax.faces.convert.FacesConverter;
 
 import tn.esprit.entities.Hotel;
 
@@ -42,8 +46,9 @@ public class HotelBean {
 	}
 
 	public void prepareCreate() {
-		setAddVisble(true);
 		init();
+		setAddVisble(true);
+		
 		
 	}
 	
@@ -111,6 +116,53 @@ public class HotelBean {
 	public void setEditVisible(boolean isEditVisible) {
 		this.isEditVisible = isEditVisible;
 	}
-	
 
+	public HotelServiceLocal getEjb() {
+		return ejb;
+	}
+	
+	
+	
+/*Converter */
+	
+//    @FacesConverter(forClass = Hotel.class)
+//    public static class HotelControllerConverter implements Converter {
+//
+//        @Override
+//        public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
+//            if (value == null || value.length() == 0) {
+//                return null;
+//            }
+//            HotelBean controller = (HotelBean) facesContext.getApplication().getELResolver().
+//                    getValue(facesContext.getELContext(), null, "hotelController");
+//            return controller.getEjb().findById(getKey(value));
+//        }
+//
+//        int getKey(String value) {
+//            int key;
+//            key = Integer.parseInt(value);
+//            return key;
+//        }
+//
+//        String getStringKey(int value) {
+//            StringBuilder sb = new StringBuilder();
+//            sb.append(value);
+//            return sb.toString();
+//        }
+//
+//        @Override
+//        public String getAsString(FacesContext facesContext, UIComponent component, Object object) {
+//            if (object == null) {
+//                return null;
+//            }
+//            if (object instanceof Hotel) {
+//                Hotel o = (Hotel) object;
+//                return getStringKey(o.getId());
+//            } else {
+//                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Hotel.class.getName());
+//            }
+//        }
+//
+//    }	
+	
 }

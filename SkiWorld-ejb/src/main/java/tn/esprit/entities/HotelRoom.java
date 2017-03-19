@@ -31,7 +31,8 @@ public class HotelRoom implements Serializable {
 
 	public HotelRoom() {
 		super();
-		hotelRoomReservations = new ArrayList<HotelRoomReservation>();
+		this.hotelRoomReservations = new ArrayList<HotelRoomReservation>();
+		this.hotel = new Hotel();
 	}   
 	@Id    
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -76,7 +77,26 @@ public class HotelRoom implements Serializable {
 	public void setHotel(Hotel hotel) {
 		this.hotel = hotel;
 	}
-	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		HotelRoom other = (HotelRoom) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}
 	
 	
 	

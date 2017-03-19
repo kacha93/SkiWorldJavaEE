@@ -11,8 +11,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 
+import tn.esprit.entities.Hotel;
 import tn.esprit.entities.HotelRoom;
 import tn.esprit.services.HotelRoomServiceLocal;
+import tn.esprit.services.HotelServiceLocal;
 
 @RequestScoped
 @ManagedBean(name="hotelRoomBean")
@@ -25,20 +27,33 @@ public class HotelRoomBean {
 	@EJB
 	HotelRoomServiceLocal ejb;
 	
-	private HotelRoom item ;
+	@EJB
+	HotelServiceLocal ejbH;
+	
+	private HotelRoom item = new HotelRoom();
+	
+	
+	
+	
 	private List<HotelRoom> items;
 	
 	@PostConstruct
 	public void init(){
 		item = new HotelRoom();
+		item.setHotel(new Hotel());
 		items = ejb.findAll();
 	}
 	
 	
 	public void create (){
 		
+		
+		
 		ejb.create(item);
 		init();
+		
+		
+		
 	}
 	
 	public void delete (HotelRoom hotelRoom){
@@ -62,6 +77,14 @@ public class HotelRoomBean {
 	public void setItems(List<HotelRoom> items) {
 		this.items = items;
 	}
+
+
+
+
+
+	
+
+	
 	
 	
 	

@@ -51,6 +51,38 @@ public class Parking implements Serializable {
 	public void setHotel(Hotel hotel) {
 		this.hotel = hotel;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((hotel == null) ? 0 : hotel.hashCode());
+		result = prime * result + id;
+		result = prime * result + occupiedPlaces;
+		result = prime * result + placesNumber;
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Parking other = (Parking) obj;
+		if (hotel == null) {
+			if (other.hotel != null)
+				return false;
+		} else if (!hotel.equals(other.hotel))
+			return false;
+		if (id != other.id)
+			return false;
+		if (occupiedPlaces != other.occupiedPlaces)
+			return false;
+		if (placesNumber != other.placesNumber)
+			return false;
+		return true;
+	}
 	 
 	
 	
