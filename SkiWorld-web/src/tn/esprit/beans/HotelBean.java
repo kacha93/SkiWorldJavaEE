@@ -70,6 +70,7 @@ public class HotelBean {
 		
 		ejb.edit(hotel);
 		setEditVisible(false);
+		init();
 		
 	}
 

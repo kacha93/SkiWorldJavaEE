@@ -25,6 +25,7 @@ public class HotelRoom implements Serializable {
 	private int number ; 
 	private float price ; 
 	private String type;
+	private boolean available;
 	private List<HotelRoomReservation> hotelRoomReservations;
 	private Hotel hotel ;
 	private static final long serialVersionUID = 1L;
@@ -97,6 +98,13 @@ public class HotelRoom implements Serializable {
 			return false;
 		return true;
 	}
+	public boolean isAvailable() {
+		return available;
+	}
+	public void setAvailable(boolean available) {
+		this.available = available;
+	}
+	
 	
 	
 	

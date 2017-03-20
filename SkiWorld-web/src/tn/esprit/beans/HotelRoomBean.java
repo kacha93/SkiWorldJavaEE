@@ -16,7 +16,7 @@ import tn.esprit.entities.HotelRoom;
 import tn.esprit.services.HotelRoomServiceLocal;
 import tn.esprit.services.HotelServiceLocal;
 
-@RequestScoped
+@ViewScoped
 @ManagedBean(name="hotelRoomBean")
 public class HotelRoomBean {
 
@@ -27,15 +27,12 @@ public class HotelRoomBean {
 	@EJB
 	HotelRoomServiceLocal ejb;
 	
-	@EJB
-	HotelServiceLocal ejbH;
+	
 	
 	private HotelRoom item = new HotelRoom();
-	
-	
-	
-	
 	private List<HotelRoom> items;
+	private boolean isEditVisible =false; 
+	private boolean isAddVisible = false;
 	
 	@PostConstruct
 	public void init(){
@@ -44,21 +41,39 @@ public class HotelRoomBean {
 		items = ejb.findAll();
 	}
 	
+	public void prepareCreate(){
+		
+		init();
+		this.setAddVisible(true);
+	}
 	
 	public void create (){
 		
-		
-		
+		item.setAvailable(true);
 		ejb.create(item);
+		this.setAddVisible(false);
 		init();
 		
 		
 		
 	}
 	
-	public void delete (HotelRoom hotelRoom){
+	public void prepareEdit(HotelRoom hotelRoom){
+		item = hotelRoom;
+		setEditVisible(true);
+		
+	}
+	
+	public void edit(){
+		ejb.edit(item);
+		this.setEditVisible(false);
 		init();
+	}
+	
+	public void delete (HotelRoom hotelRoom){
+		
 		ejb.delete(hotelRoom);
+		init();
 		
 	}
 	public List<HotelRoom> getItems(){
@@ -79,6 +94,27 @@ public class HotelRoomBean {
 	}
 
 
+	public boolean isEditVisible() {
+		return isEditVisible;
+	}
+
+
+	public void setEditVisible(boolean isEditVisible) {
+		this.isEditVisible = isEditVisible;
+	}
+
+
+	public boolean isAddVisible() {
+		return isAddVisible;
+	}
+
+
+	public void setAddVisible(boolean isAddVisible) {
+		this.isAddVisible = isAddVisible;
+	}
+
+
+	
 
 
 
