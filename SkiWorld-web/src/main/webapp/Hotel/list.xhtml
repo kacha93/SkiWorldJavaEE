@@ -15,7 +15,7 @@
 <!--     <ui:define name="body"> -->
 
 <body> 
-	
+	<p:growl id="growl"/>
 		<h:form id="HotelListForm">
 			<p:panel header="List Hotel">
 				<p:dataTable id="datalist" value="#{hotelBean.hotels}" var="item"
@@ -118,33 +118,40 @@
 		</h:form>
 
 		<!-- Creation form -->
+		
 		<p:dialog id="HotelCreateDlg" widgetVar="HotelCreateDialog"
 			modal="true" resizable="true" header="New Hotel">
 			<h:form id="HotelCreateForm" >
-				<p:panelGrid columns="2" rendered="#{hotelBean.addVisble}">
-
+				<p:panel>
+				 
+				
+				<p:panelGrid id="grid" columns="2" rendered="#{hotelBean.addVisble}">
+				
 					<p:outputLabel value="Name" />
-					<p:inputText value="#{hotelBean.hotel.name}" />
+					<p:inputText id="name" value="#{hotelBean.hotel.name}" />
 
 					<p:outputLabel value="Room Numbers" />
-					<p:inputText value="#{hotelBean.hotel.roomNumber}" />
+					<p:inputText id="rooms" value="#{hotelBean.hotel.roomNumber}" />
 
 					<p:outputLabel value="Stars" />
-					<p:inputText value="#{hotelBean.hotel.stars}" />
+					<p:inputText id="stars" value="#{hotelBean.hotel.stars}" />
 
 					<p:outputLabel value="Country" />
-					<p:inputText value="#{hotelBean.hotel.adress.country}" />
+					<p:inputText id="country" value="#{hotelBean.hotel.adress.country}" />
 
 					<p:outputLabel value="City" />
-					<p:inputText value="#{hotelBean.hotel.adress.city}" />
+					<p:inputText id="city" value="#{hotelBean.hotel.adress.city}" />
 
 					<p:outputLabel value="Adress" />
-					<p:inputText value="#{hotelBean.hotel.adress.adress}" />
+					<p:inputText id="adress" value="#{hotelBean.hotel.adress.adress}" />
 
 					</p:panelGrid>
 
-					<p:commandButton value="Save" action="#{hotelBean.create()}"
-					 update="HotelListForm:datalist" oncomplete="PF('HotelCreateDialog').hide();" ajax="true"/>
+					<p:commandButton value="Save" actionListener="#{hotelBean.create()}"
+					 update="HotelListForm:datalist,grid,growl" oncomplete="PF('HotelCreateDialog').hide();" 
+					 
+					 />
+					 </p:panel>
 				
 			</h:form>
 		</p:dialog>
@@ -156,33 +163,37 @@
 			resizable="false" appendTo="@(body)"
 			header="#{bundle.EditHotelTitle}">
 			<h:form id="HotelEditForm">
-				<p:panelGrid columns="2" rendered="#{hotelBean.editVisible}">
+			<p:panel>
+				 
+				
+				<p:panelGrid columns="2" rendered="#{hotelBean.editVisible}" id="grid">
 
 					<p:outputLabel value="Name" />
-					<p:inputText value="#{hotelBean.hotel.name}" />
+					<p:inputText id="name" value="#{hotelBean.hotel.name}" />
 
 					<p:outputLabel value="Room Numbers" />
-					<p:inputText value="#{hotelBean.hotel.roomNumber}" />
+					<p:inputText id="rooms" value="#{hotelBean.hotel.roomNumber}" />
 
 					<p:outputLabel value="Stars" />
-					<p:inputText value="#{hotelBean.hotel.stars}" />
+					<p:inputText id="stars" value="#{hotelBean.hotel.stars}" />
 
 					<p:outputLabel value="Country" />
-					<p:inputText value="#{hotelBean.hotel.adress.country}" />
+					<p:inputText id="country" value="#{hotelBean.hotel.adress.country}" />
 
 					<p:outputLabel value="City" />
-					<p:inputText value="#{hotelBean.hotel.adress.city}" />
+					<p:inputText id="city" value="#{hotelBean.hotel.adress.city}" />
 
 					<p:outputLabel value="Adress" />
-					<p:inputText value="#{hotelBean.hotel.adress.adress}" />
+					<p:inputText id="adress" value="#{hotelBean.hotel.adress.adress}" />
 
 					</p:panelGrid>
 
-					<p:commandButton value="Save" action="#{hotelBean.edit()}" 
-					update="HotelListForm:datalist"  oncomplete="PF('HotelEditDialog').hide();"/>
+					<p:commandButton value="Save" actionListener="#{hotelBean.edit()}" 
+					update="HotelListForm:datalist,grid,growl"  oncomplete="PF('HotelCreateDialog').hide();"
+					/>
 
 
-				
+				</p:panel>
 			</h:form>
 		</p:dialog>
 

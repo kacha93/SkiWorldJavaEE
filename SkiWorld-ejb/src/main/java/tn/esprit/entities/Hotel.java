@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * Entity implementation class for Entity: Hotel
@@ -53,18 +57,24 @@ public class Hotel implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	@Size(min=3 , message="Hotel name must be at least of length 3")
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
+	@Max(message="Stars must be at maximum 6" , value=6)
+	@Min(message="stars must be at least 1" , value=1)
 	public int getStars() {
 		return stars;
 	}
 	public void setStars(int stars) {
 		this.stars = stars;
 	}
+	@Min(message="Rooms number must be at least 10" , value=10)
+	
 	public int getRoomNumber() {
 		return roomNumber;
 	}
