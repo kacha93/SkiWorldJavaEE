@@ -15,7 +15,7 @@
 <!--     <ui:define name="body"> -->
 
 <body>
-
+<p:growl id="growl"></p:growl>
 	<h:form id="HotelListForm">
 		<p:panel header="List Hotel">
 			<p:dataTable id="datalist" value="#{hotelRoomBean.items}" var="item"
@@ -119,7 +119,7 @@
 			</p:panelGrid>
 			<p:commandButton value="Save"
 				actionListener="#{hotelRoomBean.create()}"
-				update="HotelListForm:datalist"
+				update="HotelListForm:datalist,growl"
 				oncomplete="PF('HotelCreateDialog').hide();" ajax="true" />
 
 
@@ -155,7 +155,7 @@
 			</p:panelGrid>
 			<p:commandButton value="Save"
 				actionListener="#{hotelRoomBean.edit()}"
-				update="HotelListForm:datalist"
+				update="HotelListForm:datalist,growl"
 				oncomplete="PF('HotelEditDialog').hide();" ajax="true" />
 
 

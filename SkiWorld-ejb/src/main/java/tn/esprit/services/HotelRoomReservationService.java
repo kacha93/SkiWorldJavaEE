@@ -1,5 +1,7 @@
 package tn.esprit.services;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -26,7 +28,13 @@ public class HotelRoomReservationService implements  HotelRoomReservationService
 
 	@Override
 	public void create(HotelRoomReservation hotelRoomReservation) {
-		em.persist(hotelRoomReservation);
+//		while(hotelRoomReservation.getCheckIn().before(hotelRoomReservation.getCheckOut())){
+//			
+//			em.persist(hotelRoomReservation);
+//			Date date = new Date();
+//			date = hotelRoomReservation.getCheckIn();
+//			date = Calendar.
+//			hotelRoomReservation.setCheckIn(hotelRoomReservation.getCheckIn());}
 		
 	}
 
@@ -62,5 +70,25 @@ public class HotelRoomReservationService implements  HotelRoomReservationService
 		return em.createNamedQuery("Hotelroomreservation.findByUserId", HotelRoomReservation.class)
 				.getResultList();
 	}
+
+	@Override
+	public List<HotelRoomReservation> findByDate(Date date) {
+		return em.createNamedQuery("HotelRoomReservation.findByReservationDate", HotelRoomReservation.class)
+				.getResultList();
+	}
+
+	@Override
+	public boolean checkAvailability(Date date) {
+		
+		return (findByDate(date).size()>0);
+		 
+	}
+	
+//	public Date nextDay(Calendar date){
+//		date.
+//		
+//		
+//		
+//	}
 
 }

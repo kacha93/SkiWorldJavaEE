@@ -13,8 +13,14 @@ import javax.persistence.*;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "HotelRoomReservation.findAll", query = "SELECT h FROM HotelRoomReservation h")})
-//jfhhg
+    @NamedQuery(name = "HotelRoomReservation.findAll", query = "SELECT h FROM HotelRoomReservation h"),
+    @NamedQuery(name = "HotelRoomReservation.findByCheckIn", query = "SELECT h FROM HotelRoomReservation h WHERE h.checkIn = :checkIn"),
+    @NamedQuery(name = "HotelRoomReservation.findByCheckOut", query = "SELECT h FROM HotelRoomReservation h WHERE h.checkOut = :checkOut"),
+    @NamedQuery(name = "HotelRoomReservation.findByCustomerNumber", query = "SELECT h FROM HotelRoomReservation h WHERE h.customerNumber = :customerNumber"),
+    @NamedQuery(name = "HotelRoomReservation.findByEffective", query = "SELECT h FROM HotelRoomReservation h WHERE h.effective = :effective"),
+    @NamedQuery(name = "HotelRoomReservation.findByReservationDate", query = "SELECT h FROM HotelRoomReservation h WHERE h.reservationDate = :reservationDate"),
+    @NamedQuery(name = "HotelRoomReservation.findByWithParking", query = "SELECT h FROM HotelRoomReservation h WHERE h.withParking = :withParking")})
+
 public class HotelRoomReservation implements Serializable {
 
 	private HotelRoomReservationPk pk ;

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 
 /**
  * Entity implementation class for Entity: HotelRoom
@@ -44,12 +45,14 @@ public class HotelRoom implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
+	@Min(message="Room number must be over 0",value=1)
 	public int getNumber() {
 		return number;
 	}
 	public void setNumber(int number) {
 		this.number = number;
 	}
+	@Min(message="Price must be over 0", value=1)
 	public float getPrice() {
 		return price;
 	}
