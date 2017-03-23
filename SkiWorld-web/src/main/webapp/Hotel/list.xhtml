@@ -134,35 +134,43 @@
 					<p:inputText id="rooms" value="#{hotelBean.hotel.roomNumber}" />
 
 					<p:outputLabel value="Stars" />
-					<p:inputText id="stars" value="#{hotelBean.hotel.stars}" />
+					<p:rating id="stars" stars="6" value="#{hotelBean.hotel.stars}" />
 
-					<p:outputLabel value="Country" />
-					<p:inputText id="country" value="#{hotelBean.hotel.adress.country}" />
+					<p:outputLabel for="country" value="Country: " />
+					<p:selectOneMenu id="country" value="#{hotelBean.country}"
+						>
+						<p:ajax listener="#{hotelBean.onCountryChange}" update="city" />
+						<f:selectItem itemLabel="Select Country" itemValue=""
+							noSelectionOption="true" />
+						<f:selectItems value="#{hotelBean.countries}" />
+					</p:selectOneMenu>
 
-					<p:outputLabel value="City" />
-					<p:inputText id="city" value="#{hotelBean.hotel.adress.city}" />
+					<p:outputLabel for="city" value="City: " />
+					<p:selectOneMenu id="city" value="#{hotelBean.city}"
+						>
+						<f:selectItem itemLabel="Select City" itemValue=""
+							noSelectionOption="true" />
+						<f:selectItems value="#{hotelBean.cities}" />
+					</p:selectOneMenu>
 
 					<p:outputLabel value="Adress" />
 					<p:inputText id="adress" value="#{hotelBean.hotel.adress.adress}" />
 
 					<p:outputLabel value="logo" />
-					<p:fileUpload value="#{hotelBean.file}" mode="advanced"
-						auto="true" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" 
-						fileUploadListener="#{hotelBean.upload}"
-						skinSimple="true"/>
+					<p:fileUpload value="#{hotelBean.file}" mode="advanced" auto="true"
+						allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+						fileUploadListener="#{hotelBean.upload}" skinSimple="true" />
 
 				</p:panelGrid>
 
 				<p:commandButton value="Save" actionListener="#{hotelBean.create}"
 					update="HotelListForm:datalist,grid,growl"
-					oncomplete="PF('HotelCreateDialog').hide();"
-					
-					ajax="true" />
-									 
-									 
-									 
-									 
-									
+					oncomplete="PF('HotelCreateDialog').hide();" ajax="true" />
+
+
+
+
+
 
 
 			</p:panel>
@@ -189,16 +197,32 @@
 					<p:inputText id="rooms" value="#{hotelBean.hotel.roomNumber}" />
 
 					<p:outputLabel value="Stars" />
-					<p:inputText id="stars" value="#{hotelBean.hotel.stars}" />
+					<p:rating id="stars" stars="6" value="#{hotelBean.hotel.stars}" />
 
-					<p:outputLabel value="Country" />
-					<p:inputText id="country" value="#{hotelBean.hotel.adress.country}" />
+					<p:outputLabel for="country" value="Country: " />
+					<p:selectOneMenu id="country" value="#{hotelBean.country}"
+						>
+						<p:ajax listener="#{hotelBean.onCountryChange}" update="city" />
+						<f:selectItem itemLabel="Select Country" itemValue=""
+							noSelectionOption="true" />
+						<f:selectItems value="#{hotelBean.countries}" />
+					</p:selectOneMenu>
 
-					<p:outputLabel value="City" />
-					<p:inputText id="city" value="#{hotelBean.hotel.adress.city}" />
+					<p:outputLabel for="city" value="City: " />
+					<p:selectOneMenu id="city" value="#{hotelBean.city}"
+						>
+						<f:selectItem itemLabel="Select City" itemValue=""
+							noSelectionOption="true" />
+						<f:selectItems value="#{hotelBean.cities}" />
+					</p:selectOneMenu>
 
 					<p:outputLabel value="Adress" />
 					<p:inputText id="adress" value="#{hotelBean.hotel.adress.adress}" />
+
+					<p:outputLabel value="logo" />
+					<p:fileUpload value="#{hotelBean.file}" mode="advanced" auto="true"
+						allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+						fileUploadListener="#{hotelBean.upload}" skinSimple="true" />
 
 				</p:panelGrid>
 

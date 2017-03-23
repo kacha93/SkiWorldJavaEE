@@ -6,6 +6,7 @@ import java.util.Date;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 
 /**
@@ -26,6 +27,7 @@ import javax.validation.constraints.Pattern;
     @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password")})
 
 @Inheritance(strategy=InheritanceType.JOINED)
+
 public class User implements Serializable {
 
 	
@@ -34,9 +36,11 @@ public class User implements Serializable {
 	private String lastName;
 	private Date birthDate;
 	private String nationalId;
+	
 	private String email;
 	private Adress adress;
-	private String password ; 
+	private String password ;
+	
 	private String login;
 	private byte[] image;
 	private static final long serialVersionUID = 1L;
@@ -45,7 +49,7 @@ public class User implements Serializable {
 		super();
 	}   
 	@Id    
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getId() {
 		return this.id;
 	}
@@ -53,12 +57,14 @@ public class User implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
+	@Size(min=1, message="First name should be at least of 1 length")
 	public String getFirstName() {
 		return firstName;
 	}
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+	@Size(min=1, message="Last Name should be at least of 1 length")
 	public String getLastName() {
 		return lastName;
 	}
@@ -73,6 +79,7 @@ public class User implements Serializable {
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
+	@Size(min=1, message="National Id should be at least of 1 length")
 	public String getNationalId() {
 		return nationalId;
 	}
@@ -81,7 +88,7 @@ public class User implements Serializable {
 	}
 	
 	@Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
-
+	@Column(unique=true)
 	public String getEmail() {
 		return email;
 	}
@@ -96,12 +103,15 @@ public class User implements Serializable {
 	public void setAdress(Adress adress) {
 		this.adress = adress;
 	}
+	@Pattern(regexp="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$" , message="Password Should contain at least 8 characters, one Lower case letter, one upper case letter, one digit")
 	public String getPassword() {
 		return password;
 	}
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	@Column(unique=true)
 	public String getLogin() {
 		return login;
 	}

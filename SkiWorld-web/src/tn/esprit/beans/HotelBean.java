@@ -4,7 +4,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -27,7 +29,7 @@ import tn.esprit.entities.Hotel;
 import tn.esprit.services.HotelServiceLocal;
 
 @ManagedBean(name = "hotelBean")
-@SessionScoped
+@ViewScoped
 
 public class HotelBean {
 
@@ -37,6 +39,12 @@ public class HotelBean {
 
 	@EJB
 	HotelServiceLocal ejb;
+	
+	private Map<String,Map<String,String>> data = new HashMap<String, Map<String,String>>();
+    private String country; 
+    private String city;  
+    private Map<String,String> countries;
+    private Map<String,String> cities;
 	
 	private UploadedFile file ;
 
@@ -82,6 +90,45 @@ public class HotelBean {
 				return null;
 			}
 		};
+		
+		countries  = new HashMap<String, String>();
+        countries.put("USA", "USA");
+        countries.put("Germany", "Germany");
+        countries.put("Canada", "Canada");
+        countries.put("England", "England");
+        countries.put("Switzerland", "Switzerland");
+         
+        Map<String,String> map = new HashMap<String, String>();
+        map.put("New York", "New York");
+        map.put("San Francisco", "San Francisco");
+        map.put("Denver", "Denver");
+        data.put("USA", map);
+         
+        map = new HashMap<String, String>();
+        map.put("Berlin", "Berlin");
+        map.put("Munich", "Munich");
+        map.put("Frankfurt", "Frankfurt");
+        data.put("Germany", map);
+         
+        map = new HashMap<String, String>();
+        map.put("Toronto", "Toronto");
+        map.put("Montreal", "Montreal");
+        map.put("Ottawa", "Ottawa");
+        data.put("Canada", map);
+        
+        map = new HashMap<String, String>();
+        map.put("Manchester", "manchester");
+        map.put("Plymouth", "Plymouth");
+        map.put("Southampton", "Southampton");
+        data.put("England", map);
+        
+        
+        map = new HashMap<String, String>();
+        map.put("Lussane","lussane");
+        map.put("Zürich","Zürich");
+        map.put("Berne","Berne");
+        map.put("Bâle", "Bâle");
+        data.put("Switzerland", map);
 		
 
 	}
@@ -137,6 +184,8 @@ public class HotelBean {
 	public void create() {
 //		hotel.setLogo(file.getContents());
 //		hotel.setLogoPath(file.getFileName());
+		hotel.getAdress().setCountry(country);
+		hotel.getAdress().setCity(city);
 		ejb.create(hotel);
 		setAddVisble(false);
 		init();
@@ -186,7 +235,53 @@ public class HotelBean {
 	public void setFile(UploadedFile file) {
 		this.file = file;
 	}
+
+	public Map<String, Map<String, String>> getData() {
+		return data;
+	}
+
+	public void setData(Map<String, Map<String, String>> data) {
+		this.data = data;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public Map<String, String> getCountries() {
+		return countries;
+	}
+
+	public void setCountries(Map<String, String> countries) {
+		this.countries = countries;
+	}
+
+	public Map<String, String> getCities() {
+		return cities;
+	}
+
+	public void setCities(Map<String, String> cities) {
+		this.cities = cities;
+	}
 	
+	public void onCountryChange() {
+        if(country !=null && !country.equals(""))
+            cities = data.get(country);
+        else
+            cities = new HashMap<String, String>();
+    }
 	
 
 

@@ -1,11 +1,16 @@
 package tn.esprit.entities;
 
 import javax.persistence.Embeddable;
+import javax.validation.constraints.Size;
 
 @Embeddable
 public class Adress {
+	
 	private String country;
+	@Size(min=3 , message="City must be at least of 3 length")
 	private String city;
+	@Size(min=3,message="Adress must be at lest of 3 length")
+	
 	private String adress;
 	
 	public String getCountry() {

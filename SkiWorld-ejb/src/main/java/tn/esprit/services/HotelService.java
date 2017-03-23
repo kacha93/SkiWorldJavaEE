@@ -13,7 +13,7 @@ import tn.esprit.entities.HotelRoom;
  * Session Bean implementation class HotelService
  */
 @Stateless
-public class HotelService implements HotelServiceRemote, HotelServiceLocal {
+public class HotelService implements HotelServiceLocal {
 
 	@PersistenceContext
 	EntityManager em;

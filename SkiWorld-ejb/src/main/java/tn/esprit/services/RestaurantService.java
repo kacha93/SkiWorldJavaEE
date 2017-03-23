@@ -12,7 +12,7 @@ import tn.esprit.entities.Restaurant;
  * Session Bean implementation class RestaurantService
  */
 @Singleton
-public class RestaurantService implements RestaurantServiceRemote, RestaurantServiceLocal {
+public class RestaurantService implements RestaurantServiceLocal {
 	@PersistenceContext
 	EntityManager em;
 

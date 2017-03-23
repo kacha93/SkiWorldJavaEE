@@ -62,7 +62,7 @@ public class GestionEvent implements GestionEventRemote {
 
 	@Override
 	public List<Event> findAll() {
-		return em.createQuery("select ev from Event e").getResultList();
+		return em.createQuery("select e from Event e").getResultList();
 	}
 
 }

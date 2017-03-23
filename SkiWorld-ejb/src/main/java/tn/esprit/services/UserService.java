@@ -12,7 +12,7 @@ import tn.esprit.entities.User;
  * Session Bean implementation class UserService
  */
 @Stateless
-public class UserService implements UserServiceLocal,UserServiceRemote {
+public class UserService implements UserServiceLocal {
 
 	@PersistenceContext
     EntityManager em;

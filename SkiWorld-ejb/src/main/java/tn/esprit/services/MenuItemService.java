@@ -12,7 +12,7 @@ import javax.persistence.PersistenceContext;
  * Session Bean implementation class MenuItemService
  */
 @Singleton
-public class MenuItemService implements MenuItemServiceRemote, MenuItemServiceLocal {
+public class MenuItemService implements MenuItemServiceLocal {
 	@PersistenceContext
 	EntityManager em;
 
