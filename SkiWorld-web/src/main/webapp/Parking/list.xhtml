@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+
+
+<body>
+<p:growl id="growl"></p:growl>
+	<h:form id="ParkingListForm">
+		<p:panel header="List Parking">
+			<p:dataTable id="datalist" value="#{parkingBean.items}" var="item"
+				paginator="true" rows="10" rowsPerPageTemplate="10,20,30,40,50">
+
+
+
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="id" />
+					</f:facet>
+					<h:outputText value="#{item.id}" />
+				</p:column>
+
+
+
+
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Places Number" />
+					</f:facet>
+					<h:outputText value="#{item.placesNumber}" />
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Occupied Places" />
+					</f:facet>
+					<h:outputText value="#{item.occupiedPlaces}" />
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="hotel" />
+					</f:facet>
+					<h:outputText value="#{item.hotel.name}" />
+				</p:column>
+
+
+		
+
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Delete" />
+					</f:facet>
+					<p:commandButton ajax="true" id="deleteButton" update="datalist"
+						actionListener="#{parking.delete(item)}" value="Delete"
+						icon="ui-icon-trash" immediate="true" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Edit" />
+					</f:facet>
+					<p:commandButton id="editButton" ajax="true"
+						actionListener="#{hotelRoomBean.prepareEdit(item)}"
+						icon="ui-icon-pencil" value="Edit" update=":ParkingEditForm"
+						oncomplete="PF('ParkingEditDialog').show()" />
+
+
+				</p:column>
+
+				<f:facet name="footer">
+					<p:commandButton id="createButton" icon="ui-icon-plus" ajax="true"
+						value="Create" actionListener="#{parkingBean.prepareCreate()}"
+						update=":ParkingCreateForm"
+						oncomplete="PF('ParkingCreateDialog').show()" />
+				</f:facet>
+			</p:dataTable>
+		</p:panel>
+	</h:form>
+
+	<!-- Creation form -->
+	
+	
+		
+	<p:dialog id="ParkingCreateDlg" widgetVar="ParkingCreateDialog"
+		modal="true" resizable="true" header="New Parking ">
+
+		<h:form id="ParkingCreateForm">
+		
+			<p:panelGrid columns="2" rendered="#{parkingBean.addVisible}">
+				<p:outputLabel value="occupiedPlaces" />
+				<p:inputText id="number" value="#{parkingBean.item.occupiedPlaces}" />
+
+				<p:outputLabel value="places Number" />
+				<p:inputText id="price" value="#{parkingBean.item.placesNumber}" />
+
+				
+
+				
+				
+			</p:panelGrid>
+			<p:commandButton value="Save"
+				actionListener="#{parkingBean.create()}"
+				update="ParkingListForm:datalist,growl"
+				oncomplete="PF('ParkingCreateDialog').hide();" ajax="true" />
+
+
+		</h:form>
+	</p:dialog>
+
+
+	<!-- Edit Form -->
+
+	<p:dialog id="ParkingEditDlg" widgetVar="ParkingEditDialog" modal="true"
+		resizable="false" appendTo="@(body)" header="#{bundle.EditParkingTitle}">
+		<h:form id="ParkingEditForm">
+			<p:panelGrid columns="2" rendered="#{parkingBean.editVisible}">
+
+				<p:outputLabel value="occupied Places" />
+				<p:inputText id="number" value="#{parkingBean.item.occupiedPlaces}" />
+
+				<p:outputLabel value="placesNumber" />
+				<p:inputText id="price" value="#{parkingBean.item.placesNumber}" />
+
+				
+
+
+				
+			</p:panelGrid>
+			<p:commandButton value="Save"
+				actionListener="#{parkingBean.edit()}"
+				update="ParkingListForm:datalist,growl"
+				oncomplete="PF('ParkingEditDialog').hide();" ajax="true" />
+
+
+
+
+		</h:form>
+	</p:dialog>
+
+
+
+</body>
+
+<!-- </ui:define> -->
+<!-- </ui:composition> -->
+
+</html>
