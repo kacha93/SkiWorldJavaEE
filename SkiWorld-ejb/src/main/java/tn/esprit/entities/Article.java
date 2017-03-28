@@ -1,6 +1,7 @@
 package tn.esprit.entities;
 
 import java.io.Serializable;
+import java.sql.Blob;
 import java.util.List;
 
 import javax.persistence.*;
@@ -18,9 +19,12 @@ public class Article implements Serializable {
 	private String name ; 
 	private String description;
 	private float price;
+	private int quantite;
 	private Shop shop;
 	private ArticleCategory articleCategory;
+	private Provider provider;
 	private List<PurchaseDetail> purchaseDetails;
+	private Blob picture;
 	
 	
 	
@@ -94,6 +98,31 @@ public class Article implements Serializable {
 
 	public void setPurchaseDetails(List<PurchaseDetail> purchaseDetails) {
 		this.purchaseDetails = purchaseDetails;
+	}
+
+	public Blob getPicture() {
+		return picture;
+	}
+
+	public void setPicture(Blob picture) {
+		this.picture = picture;
+	}
+
+	public int getQuantite() {
+		return quantite;
+	}
+
+	public void setQuantite(int quantite) {
+		this.quantite = quantite;
+	}
+@ManyToOne(cascade=CascadeType.ALL
+		)
+	public Provider getProvider() {
+		return provider;
+	}
+
+	public void setProvider(Provider provider) {
+		this.provider = provider;
 	}
 	
 	
