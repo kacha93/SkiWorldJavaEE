@@ -50,4 +50,13 @@ public class UserService implements UserServiceLocal {
 		
 	}
 
+	@Override
+	public User authenticate(String email, String password) {
+		
+		return em.createNamedQuery("User.findByCredentials", User.class)
+				.setParameter("email", email)
+				.setParameter("password", password)
+				.getSingleResult();
+	}
+
 }

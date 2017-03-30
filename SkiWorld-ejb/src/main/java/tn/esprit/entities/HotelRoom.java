@@ -37,7 +37,7 @@ public class HotelRoom implements Serializable {
 		this.hotel = new Hotel();
 	}   
 	@Id    
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public int getId() {
 		return this.id;
 	}

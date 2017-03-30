@@ -10,4 +10,13 @@
     <servlet-name>Faces Servlet</servlet-name>
     <url-pattern>*.xhtml</url-pattern>
   </servlet-mapping>
+  <filter>
+    <display-name>BasicFilter</display-name>
+    <filter-name>BasicFilter</filter-name>
+    <filter-class>tn.esprit.filter.BasicFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>BasicFilter</filter-name>
+    <url-pattern>/secured/*</url-pattern>
+  </filter-mapping>
 </web-app>

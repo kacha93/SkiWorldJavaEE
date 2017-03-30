@@ -19,12 +19,12 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "User.findById", query = "SELECT u FROM User u WHERE u.id = :id"),
     @NamedQuery(name = "User.findByAdress", query = "SELECT u FROM User u WHERE u.adress = :adress"),
     @NamedQuery(name = "User.findByBirthDate", query = "SELECT u FROM User u WHERE u.birthDate = :birthDate"),
-    @NamedQuery(name = "User.findByEmail", query = "SELECT u FROM User u WHERE u.email = :email"),
+    @NamedQuery(name = "User.findByEmail", query = "SELECT u FROM User u WHERE u.email = :email "),
     @NamedQuery(name = "User.findByFirstName", query = "SELECT u FROM User u WHERE u.firstName = :firstName"),
     @NamedQuery(name = "User.findByLastName", query = "SELECT u FROM User u WHERE u.lastName = :lastName"),
-    @NamedQuery(name = "User.findByLogin", query = "SELECT u FROM User u WHERE u.login = :login"),
     @NamedQuery(name = "User.findByNationalId", query = "SELECT u FROM User u WHERE u.nationalId = :nationalId"),
-    @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password")})
+    @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password"),
+    @NamedQuery(name = "User.findByCredentials", query = "SELECT u FROM User u WHERE u.email = :email and u.password = :password")})
 
 @Inheritance(strategy=InheritanceType.JOINED)
 
@@ -41,12 +41,14 @@ public class User implements Serializable {
 	private Adress adress;
 	private String password ;
 	
-	private String login;
+	
 	private byte[] image;
 	private static final long serialVersionUID = 1L;
 
 	public User() {
 		super();
+		this.adress = new Adress();
+		
 	}   
 	@Id    
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -111,13 +113,7 @@ public class User implements Serializable {
 		this.password = password;
 	}
 	
-	@Column(unique=true)
-	public String getLogin() {
-		return login;
-	}
-	public void setLogin(String login) {
-		this.login = login;
-	}
+	
 	@Lob
 	public byte[] getImage() {
 		return image;
@@ -136,7 +132,6 @@ public class User implements Serializable {
 		result = prime * result + id;
 		result = prime * result + Arrays.hashCode(image);
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
-		result = prime * result + ((login == null) ? 0 : login.hashCode());
 		result = prime * result + ((nationalId == null) ? 0 : nationalId.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		return result;
@@ -179,11 +174,6 @@ public class User implements Serializable {
 				return false;
 		} else if (!lastName.equals(other.lastName))
 			return false;
-		if (login == null) {
-			if (other.login != null)
-				return false;
-		} else if (!login.equals(other.login))
-			return false;
 		if (nationalId == null) {
 			if (other.nationalId != null)
 				return false;
@@ -196,6 +186,8 @@ public class User implements Serializable {
 			return false;
 		return true;
 	}
+	
+	
 	
 	
 	
